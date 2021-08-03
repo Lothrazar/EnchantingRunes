@@ -2,13 +2,11 @@ buildscript {
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
         maven { url = 'https://maven.minecraftforge.net/' }
-       // maven { url = 'https://dist.creeper.host/Sponge/maven' }
         jcenter()
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
-    //    classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
@@ -16,9 +14,8 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'checkstyle'
-// apply plugin: 'org.spongepowered.mixin'
 
-import net.minecraftforge.gradle.common.task.SignJar
+import net.minecraftforge.gradle.common.tasks.SignJar
 import groovy.json.JsonSlurper
 import groovy.json.JsonOutput
 
@@ -90,31 +87,10 @@ minecraft {
             }
         }
 
-        data {
-            workingDirectory project.file('run')
-
-            // Recommended logging data for a userdev environment
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-
-            // Recommended logging level for the console
-            property 'forge.logging.console.level', 'debug'
-
-            args '--mod', 'enchantingrunes', '--all', '--output', file('src/generated/resources/')
-
-            mods {
-                enchantingrunes {
-                    source sourceSets.main
-                }
-            }
-        }
     }
 }
 
-// mixin {
-//       add sourceSets.main, "lothrazarenchantingrunes.refmap.json"
-//
-//       disableTargetValidator = false
-// }
+
 
 dependencies {
     // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
@@ -122,14 +98,18 @@ dependencies {
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
  
-    compile fg.deobf("mezz.jei:${jei_version}")
+    implementation fg.deobf("mezz.jei:${jei_version}")
  //   compile fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
  //   compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
  //   runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
 
 
   //  implementation fg.deobf("curse.maven:simple-storage-network-268495:3257204")
-  //  implementation fg.deobf("curse.maven:cyclic-239286:3249448")
+   implementation fg.deobf("curse.maven:mantle-74924:3273201")
+    implementation fg.deobf("curse.maven:cyclic-239286:3249448")
+    implementation fg.deobf("curse.maven:cofh-core-69162:3249453")
+	  implementation fg.deobf("curse.maven:ensorcellation-349447:3246996")
+    
   //  implementation fg.deobf("curse.maven:ctm-267602:3137659")
   //  implementation fg.deobf("curse.maven:storage-drawers-223852:3180569")
   //  implementation fg.deobf("curse.maven:refined-storage-243076:3157354")
@@ -188,8 +168,6 @@ jar {
 // This is the preferred method to reobfuscate your jar file
 jar.finalizedBy('reobfJar') 
 // However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
-
-//publish.dependsOn('reobfJar')
 
 publishing {
     publications {
