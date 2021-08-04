@@ -17,6 +17,9 @@ public class ModRegistry {
   public static final DeferredRegister<TileEntityType<?>> TILE_ENTITIES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, ModMain.MODID);
   public static final RegistryObject<Item> RUNE_A = ITEMS.register("rune_a", () -> new Item(new Item.Properties().group(ItemGroup.MISC)));
   public static final RegistryObject<Item> RUNE_B = ITEMS.register("rune_b", () -> new Item(new Item.Properties().group(ItemGroup.MISC)));
+  public static final RegistryObject<Item> RUNE_C = ITEMS.register("rune_c", () -> new Item(new Item.Properties().group(ItemGroup.MISC)));
+  public static final RegistryObject<Item> RUNE_D = ITEMS.register("rune_d", () -> new Item(new Item.Properties().group(ItemGroup.MISC)));
+  public static final RegistryObject<Item> RUNE_E = ITEMS.register("rune_e", () -> new Item(new Item.Properties().group(ItemGroup.MISC)));
   //  @SubscribeEvent
   //  public static void onContainerRegistry(final RegistryEvent.Register<ContainerType<?>> event) {
   //    // IForgeRegistry<ContainerType<?>> r = event.getRegistry();

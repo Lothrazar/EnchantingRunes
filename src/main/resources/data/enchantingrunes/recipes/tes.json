@@ -10,7 +10,7 @@
 			"item": "enchantingrunes:rune_b"
 		},
 		"c": {
-			"item": "minecraft:iron_sword"
+			"item": "cyclic:emerald_sword"
 		},
 		"f": {
 			"type": "forge:nbt",
@@ -41,11 +41,11 @@
 		{
 			"values": [
 				{
-						"modid": "cyclic",
-						"type": "forge:mod_loaded"
+					"modid": "cyclic",
+					"type": "forge:mod_loaded"
 				},
 				{
-					"item": "minecraft:iron_sword",
+					"item": "cyclic:emerald_sword",
 					"type": "forge:item_exists"
 				}
 			],

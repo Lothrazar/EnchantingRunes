@@ -1,24 +1,39 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-	  " c ",    
-    " d ",
-    "   "
-  ],
-  "key": {
-  	"d": {
-  		"item":"enchantingrunes:rune_a"
-  	},
-  	"c": {
-  		"item":"minecraft:stone_sword"
-  	}
-  },
-  "result": {
-    "item": "minecraft:stone_sword",
-    "count": 1,
-    "nbt": {
-      "Enchantments": [{ "id": "minecraft:unbreaking", "lvl": 2 }],
-      "Damage": 1
-    }
-  }
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" c ",
+		" d ",
+		"   "
+	],
+	"key": {
+		"d": {
+			"item": "enchantingrunes:rune_a"
+		},
+		"c": {
+			"item": "minecraft:stone_sword"
+		}
+	},
+	"result": {
+		"item": "minecraft:stone_sword",
+		"count": 1,
+		"nbt": {
+			"Enchantments": [
+				{
+					"id": "minecraft:unbreaking",
+					"lvl": 2
+				},
+				{
+					"id": "minecraft:venom",
+					"lvl": 2
+				}
+			],
+			"Damage": 1
+		}
+	},
+	"conditions": [
+		{
+			"modid": "cyclic",
+			"type": "forge:mod_loaded"
+		}
+	]
 }
