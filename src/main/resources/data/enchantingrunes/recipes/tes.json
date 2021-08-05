@@ -1,32 +1,26 @@
 {
 	"type": "minecraft:crafting_shaped",
 	"pattern": [
-		" c ",
+		"cbc",
 		" d ",
-		" f "
+		" s "
 	],
 	"key": {
-		"d": {
+		"b": {
 			"item": "enchantingrunes:rune_b"
 		},
 		"c": {
-			"item": "cyclic:emerald_sword"
+			"item": "enchantingrunes:rune_c"
 		},
-		"f": {
-			"type": "forge:nbt",
-			"item": "minecraft:enchanted_book",
-			"nbt": {
-				"StoredEnchantments": [
-					{
-						"id": "minecraft:mending",
-						"lvl": 1
-					}
-				]
-			}
+		"d": {
+			"item": "enchantingrunes:rune_d"
+		},
+		"s": {
+			"item": "minecraft:stone_sword"
 		}
 	},
 	"result": {
-		"item": "minecraft:iron_sword",
+		"item": "minecraft:stone_sword",
 		"count": 1,
 		"nbt": {
 			"Enchantments": [

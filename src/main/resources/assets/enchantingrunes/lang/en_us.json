@@ -1,1 +1,7 @@
-{ }
+{
+	"item.enchantingrunes.rune_a":"A",
+	"item.enchantingrunes.rune_b":"B",
+	"item.enchantingrunes.rune_c":"C",
+	"item.enchantingrunes.rune_d":"D",
+	"item.enchantingrunes.rune_e":"E"
+}
