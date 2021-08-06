@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"s ",
+		"s "
+	],
+	"key": {
+		"s": {
+			"item": "minecraft:stone_pressure_plate"
+		}
+	},
+	"result": {
+		"item": "enchantingrunes:stone_layer",
+		"count": 4
+	}
+}

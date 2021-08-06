@@ -1,0 +1,38 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+			"item": "enchantingrunes:rune_c"
+		},
+		{
+			"item": "enchantingrunes:rune_g"
+		},
+		{
+			"item": "enchantingrunes:rune_e"
+		},
+		{
+			"item": "minecraft:stone_axe"
+		}
+	],
+	"result": {
+		"item": "minecraft:stone_axe",
+		"count": 1,
+		"nbt": {
+			"Damage": 1,
+			"Enchantments": [
+				{
+					"id": "minecraft:efficiency",
+					"lvl": 4
+				},
+				{
+					"id": "minecraft:fortune",
+					"lvl": 1
+				},
+				{
+					"id": "minecraft:vanishing_curse",
+					"lvl": 1
+				}
+			]
+		}
+	}
+}

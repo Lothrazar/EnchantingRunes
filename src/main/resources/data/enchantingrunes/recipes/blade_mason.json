@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" s",
+		"t "
+	],
+	"key": {
+		"s": {
+			"item": "minecraft:stone_pressure_plate"
+		},
+		"t": {
+			"item": "minecraft:stick"
+		}
+	},
+	"result": {
+		"item": "enchantingrunes:blade_mason",
+		"count": 1
+	}
+}

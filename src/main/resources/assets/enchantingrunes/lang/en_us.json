@@ -1,7 +1,14 @@
 {
-	"item.enchantingrunes.rune_a":"A",
-	"item.enchantingrunes.rune_b":"B",
-	"item.enchantingrunes.rune_c":"C",
-	"item.enchantingrunes.rune_d":"D",
-	"item.enchantingrunes.rune_e":"E"
+	"itemGroup.enchantingrunes":"Runestones",
+	"block.enchantingrunes.rune_knife":"Rune Masons' Blade",
+	"block.enchantingrunes.stone_layer":"Stone Layer",
+	"item.enchantingrunes.blank_rune":"Blank Rune",
+	"item.enchantingrunes.rune_a":"Blood",
+	"item.enchantingrunes.rune_b":"Balance",
+	"item.enchantingrunes.rune_c":"Cosmic",
+	"item.enchantingrunes.rune_d":"Chaos",
+	"item.enchantingrunes.rune_e":"Void",
+	"item.enchantingrunes.rune_f":"Wisdom",
+	"item.enchantingrunes.rune_g":"Radiance",
+	"item.enchantingrunes.rune_h":"Humility"
 }

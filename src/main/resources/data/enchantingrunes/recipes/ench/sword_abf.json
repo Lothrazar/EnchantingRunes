@@ -1,0 +1,40 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+			"item": "enchantingrunes:rune_a"
+		},
+		{
+			"item": "enchantingrunes:rune_b"
+		},
+		{
+			"item": "enchantingrunes:rune_f"
+		},
+		{
+			"item": "minecraft:stone_sword"
+		}
+	],
+	"result": {
+		"item": "minecraft:stone_sword",
+		"count": 1,
+		"nbt": {
+			"Damage": 1,
+			"Lore":"---",
+			"DisplayName":"Testing",
+			"Enchantments": [
+				{
+					"id": "minecraft:sharpness",
+					"lvl": 3
+				},
+				{
+					"id": "minecraft:unbreaking",
+					"lvl": 1
+				},
+				{
+					"id": "minecraft:vanishing_curse",
+					"lvl": 1
+				}
+			]
+		}
+	}
+}

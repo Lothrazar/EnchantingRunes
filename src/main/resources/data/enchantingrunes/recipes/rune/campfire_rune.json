@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": {
+    "item": "enchantingrunes:blank_rune"
+  },
+  "result": "enchantingrunes:rune_a",
+  "experience": 0.35,
+  "cookingtime": 600
+}
