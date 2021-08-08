@@ -7,14 +7,14 @@
 	],
 	"key": {
 		"b": {
-			"item": "enchantingrunes:blank_rune"
+			"item": "enchantingrunes:rune_c"
 		}
 		,"f": {
 			"tag": "minecraft:small_flowers"
 		}
 	},
 	"result": {
-		"item": "enchantingrunes:rune_c",
+		"item": "enchantingrunes:balance_rune",
 		"count": 2
 	}
 }

@@ -2,7 +2,7 @@
 	"type": "minecraft:crafting_shaped",
 	"pattern": [
 		" s",
-		"t "
+		"ts"
 	],
 	"key": {
 		"s": {
@@ -13,7 +13,7 @@
 		}
 	},
 	"result": {
-		"item": "enchantingrunes:blade_mason",
+		"item": "enchantingrunes:masonry_blade",
 		"count": 1
 	}
 }

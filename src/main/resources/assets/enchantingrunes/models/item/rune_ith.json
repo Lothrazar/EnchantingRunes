@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "enchantingrunes:item/rune_b"
+        "layer0": "enchantingrunes:item/rune_ith"
     }
 }
