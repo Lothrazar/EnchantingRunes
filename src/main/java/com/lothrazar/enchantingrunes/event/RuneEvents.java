@@ -29,19 +29,13 @@ public class RuneEvents {
   public void test(ItemCraftedEvent event) {
     ItemStack crafting = event.getCrafting();
     if (crafting.getTag() != null && crafting.getTag().contains(ModMainRunes.MODID)) {
-      if (crafting.getTag().contains("level")) {
-        //maybe
-        Map<Enchantment, Integer> oldEnch = EnchantmentHelper.getEnchantments(crafting);
-        EnchantmentHelper.setEnchantments(new HashMap<Enchantment, Integer>(), crafting);
-        applyRandomEnch(event, crafting);
-        if (oldEnch != null && !oldEnch.isEmpty()) {
-          this.merge(oldEnch, crafting);
-        }
+      //maybe the runes say apply random stuff
+      if (crafting.getChildTag(ModMainRunes.MODID).contains("level")) {
+        this.applyRunesRandomly(event, crafting);
       }
-      CompoundNBT modTag = crafting.getChildTag(ModMainRunes.MODID);
-      if (modTag.contains("lore") && modTag.getBoolean("lore")) {
-        //        tryRuneword(event);
-        this.generateLore(event, crafting);
+      //random or not, check what the lore says
+      if (crafting.getChildTag(ModMainRunes.MODID).contains("lore") && crafting.getChildTag(ModMainRunes.MODID).getBoolean("lore")) {
+        this.applyRunelore(event, crafting);
       }
       //onlyh remove after done with it
       crafting.getTag().remove(ModMainRunes.MODID);
@@ -49,7 +43,21 @@ public class RuneEvents {
     }
   }
 
-  private void generateLore(ItemCraftedEvent event, ItemStack crafting) {
+  private void applyRunesRandomly(ItemCraftedEvent event, ItemStack crafting) {
+    //maybe
+    Map<Enchantment, Integer> oldEnch = EnchantmentHelper.getEnchantments(crafting);
+    EnchantmentHelper.setEnchantments(new HashMap<Enchantment, Integer>(), crafting);
+    applyRandomEnch(event, crafting);
+    Map<Enchantment, Integer> newTest = EnchantmentHelper.getEnchantments(crafting);
+    System.out.println("apply random ench " + crafting.getTag() + " LIST " + newTest);
+    if (oldEnch != null && !oldEnch.isEmpty()) {
+      this.merge(oldEnch, crafting);
+    }
+    //it was a random one, remove the lore
+    crafting.getTag().remove("display");
+  }
+
+  private void applyRunelore(ItemCraftedEvent event, ItemStack crafting) {
     if (event.getInventory() instanceof CraftingInventory) {
       String lore = "";
       CraftingInventory test = (CraftingInventory) event.getInventory();
@@ -68,7 +76,7 @@ public class RuneEvents {
       displayTag.put("Lore", tagList);
       displayTag.putString("Name", "TEST");
       crafting.getTag().put("display", displayTag);
-      System.out.println(" crafting.getTag() " + crafting.getTag());
+      System.out.println(" test after generate lore.getTag() " + crafting.getTag());
     }
     //    "display": {
     //      "Lore": [
@@ -90,7 +98,7 @@ public class RuneEvents {
 
   private void applyRandomEnch(ItemCraftedEvent event, ItemStack crafting) {
     CompoundNBT tag = crafting.getChildTag(ModMainRunes.MODID);
-    EnchantmentHelper.addRandomEnchantment(event.getPlayer().world.rand, crafting, tag.getInt("level"), tag.getBoolean("treasure"));
+    crafting = EnchantmentHelper.addRandomEnchantment(event.getPlayer().world.rand, crafting, tag.getInt("level"), tag.getBoolean("treasure"));
   }
 
   private void merge(Map<Enchantment, Integer> oldEnch, ItemStack crafting) {

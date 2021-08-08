@@ -33,8 +33,6 @@
 		"item": "minecraft:stone_axe",
 		"count": 1,
 		"nbt": {
-			
-			"Damage": 1,
 			"enchantingrunes": {
 				"lore": false,
 				"treasure": false,
