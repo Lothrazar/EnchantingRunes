@@ -21,6 +21,12 @@
     {"id":"cyclic:netherbrick_shovel","required":false},
     {"id":"cyclic:netherbrick_hoe","required":false},
     {"id":"cyclic:netherbrick_axe","required":false},
+    {"id":"pickletweaks:flint_sword","required":false},
+    {"id":"pickletweaks:flint_pickaxe","required":false},
+    {"id":"pickletweaks:flint_shovel","required":false},
+    {"id":"pickletweaks:flint_hoe","required":false},
+    {"id":"pickletweaks:flint_axe","required":false},
+    {"id":"pickletweaks:flint_axe","required":false},
     "minecraft:bow"
   ]
 }
