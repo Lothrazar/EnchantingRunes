@@ -1,0 +1,30 @@
+{
+	"type": "crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "enchantingrunes:rune_i"
+		},
+		{
+			"item": "enchantingrunes:rune_e"
+		},
+		{
+			"item": "minecraft:stone_pickaxe"
+		}
+	],
+	"result": {
+		"item": "minecraft:stone_pickaxe",
+		"count": 1,
+		"nbt": {
+			"Damage": 2,
+			"enchantingrunes": {
+				"lore": true
+			},
+			"Enchantments": [
+				{
+					"id": "minecraft:efficiency",
+					"lvl": 1
+				}
+			]
+		}
+	}
+}

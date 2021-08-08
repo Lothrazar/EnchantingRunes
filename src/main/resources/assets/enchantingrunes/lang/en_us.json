@@ -1,6 +1,7 @@
 {
 	"itemGroup.enchantingrunes":"Runestones",
-	"block.enchantingrunes.masonry_blade":"Rune Masons' Blade",
+	"item.enchantingrunes.masonry_blade":"Rune Masons' Blade",
+	"item.enchantingrunes.masonry_blade.tooltip":"Carve stone layers and runestones for rune words",
 	"item.enchantingrunes.random":"Random enchantments are applied",
 	"item.enchantingrunes.rune_a":"At",
 	"item.enchantingrunes.rune_e":"Ek",

@@ -1,6 +1,7 @@
 package com.lothrazar.enchantingrunes;
 
 import com.lothrazar.enchantingrunes.block.BlockLayering;
+import com.lothrazar.enchantingrunes.item.ItemRune;
 import com.lothrazar.enchantingrunes.item.KnifeItem;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -36,13 +37,13 @@ public class RuneRegistry {
   public static final RegistryObject<Item> RADIANCE_RUNE = ITEMS.register("radiance_rune", () -> new Item(new Item.Properties().group(TAB)));
   public static final RegistryObject<Item> VOID_RUNE = ITEMS.register("void_rune", () -> new Item(new Item.Properties().group(TAB)));
   public static final RegistryObject<Item> WISDOM_RUNE = ITEMS.register("wisdom_rune", () -> new Item(new Item.Properties().group(TAB)));
-  public static final RegistryObject<Item> RUNE_A = ITEMS.register("rune_a", () -> new Item(new Item.Properties().group(TAB)));
-  public static final RegistryObject<Item> RUNE_E = ITEMS.register("rune_e", () -> new Item(new Item.Properties().group(TAB)));
-  public static final RegistryObject<Item> RUNE_I = ITEMS.register("rune_i", () -> new Item(new Item.Properties().group(TAB)));
-  public static final RegistryObject<Item> RUNE_O = ITEMS.register("rune_o", () -> new Item(new Item.Properties().group(TAB)));
-  public static final RegistryObject<Item> RUNE_U = ITEMS.register("rune_u", () -> new Item(new Item.Properties().group(TAB)));
-  public static final RegistryObject<Item> RUNE_Y = ITEMS.register("rune_y", () -> new Item(new Item.Properties().group(TAB)));
-  public static final RegistryObject<Item> RUNE_ITH = ITEMS.register("rune_ith", () -> new Item(new Item.Properties().group(TAB)));
+  public static final RegistryObject<ItemRune> RUNE_A = ITEMS.register("rune_a", () -> new ItemRune(new Item.Properties().group(TAB)));
+  public static final RegistryObject<ItemRune> RUNE_E = ITEMS.register("rune_e", () -> new ItemRune(new Item.Properties().group(TAB)));
+  public static final RegistryObject<ItemRune> RUNE_I = ITEMS.register("rune_i", () -> new ItemRune(new Item.Properties().group(TAB)));
+  public static final RegistryObject<ItemRune> RUNE_O = ITEMS.register("rune_o", () -> new ItemRune(new Item.Properties().group(TAB)));
+  public static final RegistryObject<ItemRune> RUNE_U = ITEMS.register("rune_u", () -> new ItemRune(new Item.Properties().group(TAB)));
+  public static final RegistryObject<ItemRune> RUNE_Y = ITEMS.register("rune_y", () -> new ItemRune(new Item.Properties().group(TAB)));
+  public static final RegistryObject<ItemRune> RUNE_ITH = ITEMS.register("rune_ith", () -> new ItemRune(new Item.Properties().group(TAB)));
   //stone
   public static final RegistryObject<Item> BLADE_MASON = ITEMS.register("masonry_blade", () -> new KnifeItem(new Item.Properties().group(TAB)));
   public static final RegistryObject<Block> STONE_LAYERS = BLOCKS.register("stone_layer", () -> new BlockLayering(AbstractBlock.Properties.create(Material.ROCK)));

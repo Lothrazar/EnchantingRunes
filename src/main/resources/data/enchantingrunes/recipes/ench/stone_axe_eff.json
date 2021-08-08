@@ -5,7 +5,7 @@
 			"item": "enchantingrunes:rune_a"
 		},
 		{
-			"item": "enchantingrunes:rune_e"
+			"item": "enchantingrunes:rune_i"
 		},
 		{
 			"item": "minecraft:stone_axe"
@@ -22,7 +22,7 @@
 			"Enchantments": [
 				{
 					"id": "minecraft:efficiency",
-					"lvl": 2
+					"lvl": 1
 				}
 			]
 		}

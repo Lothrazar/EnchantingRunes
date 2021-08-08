@@ -1,0 +1,33 @@
+{
+	"type": "crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "enchantingrunes:rune_a"
+		},
+		{
+			"item": "enchantingrunes:rune_u"
+		},
+		{
+			"item": "enchantingrunes:rune_e"
+		},
+		{
+			"item": "minecraft:stone_sword"
+		}
+	],
+	"result": {
+		"item": "minecraft:stone_sword",
+		"count": 1,
+		"nbt": {
+			"Damage": 2,
+			"enchantingrunes": {
+				"lore": true
+			},
+			"Enchantments": [
+				{
+					"id": "minecraft:sharpness",
+					"lvl": 1
+				}
+			]
+		}
+	}
+}
