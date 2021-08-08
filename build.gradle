@@ -104,11 +104,12 @@ dependencies {
  //   runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
 
 
-  //  implementation fg.deobf("curse.maven:simple-storage-network-268495:3257204")
+ /  implementation fg.deobf("curse.maven:simple-storage-network-268495:3388232")
    implementation fg.deobf("curse.maven:mantle-74924:3273201")
-    implementation fg.deobf("curse.maven:cyclic-239286:3249448")
+    implementation fg.deobf("curse.maven:cyclic-239286:3411158")
     implementation fg.deobf("curse.maven:cofh-core-69162:3249453")
 	  implementation fg.deobf("curse.maven:ensorcellation-349447:3246996")
+	  implementation fg.deobf("curse.maven:pickle-tweaks-238761:3329819")
     
   //  implementation fg.deobf("curse.maven:ctm-267602:3137659")
   //  implementation fg.deobf("curse.maven:storage-drawers-223852:3180569")
