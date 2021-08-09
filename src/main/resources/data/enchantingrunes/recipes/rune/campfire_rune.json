@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:campfire_cooking",
-  "ingredient": {
-    "item": "enchantingrunes:rune_a"
-  },
-  "result": "enchantingrunes:humility_rune",
-  "experience": 0.35,
-  "cookingtime": 600
-}

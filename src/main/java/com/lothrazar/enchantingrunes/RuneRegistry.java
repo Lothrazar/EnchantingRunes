@@ -23,20 +23,20 @@ public class RuneRegistry {
 
     @Override
     public ItemStack createIcon() {
-      return new ItemStack(HUMILITY_RUNE.get());
+      return new ItemStack(RUNE_ITH.get());
     }
   };
   public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ModMainRunes.MODID);
   public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ModMainRunes.MODID);
   public static final DeferredRegister<TileEntityType<?>> TILE_ENTITIES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, ModMainRunes.MODID);
-  public static final RegistryObject<Item> BALANCE_RUNE = ITEMS.register("balance_rune", () -> new Item(new Item.Properties().group(TAB)));
-  public static final RegistryObject<Item> BLOOD_RUNE = ITEMS.register("blood_rune", () -> new Item(new Item.Properties().group(TAB)));
-  public static final RegistryObject<Item> CHAOS_RUNE = ITEMS.register("chaos_rune", () -> new Item(new Item.Properties().group(TAB)));
-  public static final RegistryObject<Item> COSMIC_RUNE = ITEMS.register("cosmic_rune", () -> new Item(new Item.Properties().group(TAB)));
-  public static final RegistryObject<Item> HUMILITY_RUNE = ITEMS.register("humility_rune", () -> new Item(new Item.Properties().group(TAB)));
-  public static final RegistryObject<Item> RADIANCE_RUNE = ITEMS.register("radiance_rune", () -> new Item(new Item.Properties().group(TAB)));
-  public static final RegistryObject<Item> VOID_RUNE = ITEMS.register("void_rune", () -> new Item(new Item.Properties().group(TAB)));
-  public static final RegistryObject<Item> WISDOM_RUNE = ITEMS.register("wisdom_rune", () -> new Item(new Item.Properties().group(TAB)));
+  //  public static final RegistryObject<Item> BALANCE_RUNE = ITEMS.register("balance_rune", () -> new Item(new Item.Properties().group(TAB)));
+  //  public static final RegistryObject<Item> BLOOD_RUNE = ITEMS.register("blood_rune", () -> new Item(new Item.Properties().group(TAB)));
+  //  public static final RegistryObject<Item> CHAOS_RUNE = ITEMS.register("chaos_rune", () -> new Item(new Item.Properties().group(TAB)));
+  //  public static final RegistryObject<Item> COSMIC_RUNE = ITEMS.register("cosmic_rune", () -> new Item(new Item.Properties().group(TAB)));
+  //  public static final RegistryObject<Item> HUMILITY_RUNE = ITEMS.register("humility_rune", () -> new Item(new Item.Properties().group(TAB)));
+  //  public static final RegistryObject<Item> RADIANCE_RUNE = ITEMS.register("radiance_rune", () -> new Item(new Item.Properties().group(TAB)));
+  //  public static final RegistryObject<Item> VOID_RUNE = ITEMS.register("void_rune", () -> new Item(new Item.Properties().group(TAB)));
+  //  public static final RegistryObject<Item> WISDOM_RUNE = ITEMS.register("wisdom_rune", () -> new Item(new Item.Properties().group(TAB)));
   public static final RegistryObject<ItemRune> RUNE_A = ITEMS.register("rune_a", () -> new ItemRune(new Item.Properties().group(TAB)));
   public static final RegistryObject<ItemRune> RUNE_E = ITEMS.register("rune_e", () -> new ItemRune(new Item.Properties().group(TAB)));
   public static final RegistryObject<ItemRune> RUNE_I = ITEMS.register("rune_i", () -> new ItemRune(new Item.Properties().group(TAB)));

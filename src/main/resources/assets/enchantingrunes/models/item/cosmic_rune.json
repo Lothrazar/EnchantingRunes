@@ -1,6 +1,0 @@
-{
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "enchantingrunes:item/runestones/cosmic_rune"
-    }
-}

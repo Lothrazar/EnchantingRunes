@@ -39,7 +39,6 @@ public class RuneEvents {
       }
       //onlyh remove after done with it
       crafting.getTag().remove(ModMainRunes.MODID);
-      System.out.println("FINAL " + crafting.getTag());
     }
   }
 
@@ -66,7 +65,6 @@ public class RuneEvents {
           lore += stak.getDisplayName().getString();
         }
       }
-      //      System.out.println("GENLORE " + lore);
       CompoundNBT displayTag = new CompoundNBT();
       //      displayTag.pu
       ListNBT tagList = new ListNBT();
@@ -75,7 +73,6 @@ public class RuneEvents {
       displayTag.put("Lore", tagList);
       displayTag.putString("Name", "TEST");
       crafting.getTag().put("display", displayTag);
-      System.out.println(" test after generate lore.getTag() " + crafting.getTag());
     }
     //    "display": {
     //      "Lore": [
@@ -89,7 +86,7 @@ public class RuneEvents {
   //      for (int i = 0; i < test.getSizeInventory(); i++) {
   //        ItemStack stak = test.getStackInSlot(0);
   //        if (stak.getItem().isIn(RUNESTONE)) {
-  //          System.out.println(i + " wsas input " + stak);
+  //       println(i + " wsas input " + stak);
   //        }
   //      }
   //    }

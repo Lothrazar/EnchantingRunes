@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "enchantingrunes:blank_rune"
-  },
-  "result": "enchantingrunes:rune_b",
-  "count": 1
-}
