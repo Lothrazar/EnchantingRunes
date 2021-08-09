@@ -2,6 +2,9 @@
 	"type": "crafting_shapeless",
 	"ingredients": [
 		{
+			"item": "enchantingrunes:rune_e"
+		},
+		{
 			"item": "enchantingrunes:rune_a"
 		},
 		{
@@ -11,14 +14,14 @@
 			"item": "enchantingrunes:rune_o"
 		},
 		{
-			"item": "enchantingrunes:rune_u"
+			"item": "enchantingrunes:rune_ith"
 		},
 		{
-			"item": "minecraft:stone_axe"
+			"item": "minecraft:stone_shovel"
 		}
 	],
 	"result": {
-		"item": "minecraft:stone_axe",
+		"item": "minecraft:stone_shovel",
 		"count": 1,
 		"nbt": {
 			"Damage": 2,
@@ -28,11 +31,7 @@
 			"Enchantments": [
 				{
 					"id": "minecraft:efficiency",
-					"lvl": 3
-				},
-				{
-					"id": "minecraft:unbreaking",
-					"lvl": 1
+					"lvl": 5
 				},
 				{
 					"id": "minecraft:vanishing_curse",

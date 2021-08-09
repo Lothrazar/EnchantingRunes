@@ -2,20 +2,26 @@
 	"type": "crafting_shapeless",
 	"ingredients": [
 		{
-			"item": "enchantingrunes:rune_y"
+			"item": "enchantingrunes:rune_u"
 		},
 		{
-			"item": "enchantingrunes:rune_u"
+			"item": "enchantingrunes:rune_o"
+		},
+		{
+			"item": "enchantingrunes:rune_i"
+		},
+		{
+			"item": "enchantingrunes:rune_o"
 		},
 		{
 			"item": "enchantingrunes:rune_ith"
 		},
 		{
-			"item": "minecraft:stone_sword"
+			"item": "minecraft:stone_shovel"
 		}
 	],
 	"result": {
-		"item": "minecraft:stone_sword",
+		"item": "minecraft:stone_shovel",
 		"count": 1,
 		"nbt": {
 			"Damage": 2,
@@ -24,7 +30,7 @@
 			},
 			"Enchantments": [
 				{
-					"id": "minecraft:sharpness",
+					"id": "minecraft:silk_touch",
 					"lvl": 1
 				}
 			]

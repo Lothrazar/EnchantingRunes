@@ -11,17 +11,17 @@
 			"tag": "enchantingrunes:runes/stone"
 		},
 		{
-			"item": "minecraft:stone_shovel"
+			"item": "minecraft:stone_hoe"
 		}
 	],
 	"result": {
-		"item": "minecraft:stone_shovel",
+		"item": "minecraft:stone_hoe",
 		"count": 1,
 		"nbt": {
 			"enchantingrunes": {
 				"lore": false,
 				"treasure": false,
-				"level": 0
+				"level": 1
 			},
 			"display": {
 				"Lore": [

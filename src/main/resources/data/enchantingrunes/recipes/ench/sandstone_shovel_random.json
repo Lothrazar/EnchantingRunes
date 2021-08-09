@@ -26,17 +26,17 @@
 			"tag": "enchantingrunes:runes/stone"
 		},
 		{
-			"item": "minecraft:bow"
+			"item": "cyclic:sandstone_pickaxe"
 		}
 	],
 	"result": {
-		"item": "minecraft:bow",
+		"item": "cyclic:sandstone_pickaxe",
 		"count": 1,
 		"nbt": {
 			"enchantingrunes": {
 				"lore": false,
-				"treasure": true,
-				"level": 1
+				"treasure": false,
+				"level": 0
 			},
 			"display": {
 				"Lore": [
@@ -44,5 +44,20 @@
 				]
 			}
 		}
-	}
+	},
+	"conditions": [
+		{
+			"values": [
+				{
+					"modid": "cyclic",
+					"type": "forge:mod_loaded"
+				},
+				{
+					"item": "cyclic:sandstone_pickaxe",
+					"type": "forge:item_exists"
+				}
+			],
+			"type": "forge:and"
+		}
+	]
 }

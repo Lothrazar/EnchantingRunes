@@ -49,7 +49,6 @@ public class RuneEvents {
     EnchantmentHelper.setEnchantments(new HashMap<Enchantment, Integer>(), crafting);
     applyRandomEnch(event, crafting);
     Map<Enchantment, Integer> newTest = EnchantmentHelper.getEnchantments(crafting);
-    System.out.println("apply random ench " + crafting.getTag() + " LIST " + newTest);
     if (oldEnch != null && !oldEnch.isEmpty()) {
       this.merge(oldEnch, crafting);
     }

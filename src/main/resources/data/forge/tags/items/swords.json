@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:stone_sword",
+    "minecraft:wooden_sword",
+    {"id":"cyclic:sandstone_sword","required":false},
+    {"id":"cyclic:netherbrick_sword","required":false},
+    {"id":"pickletweaks:flint_sword","required":false}
+  ]
+}

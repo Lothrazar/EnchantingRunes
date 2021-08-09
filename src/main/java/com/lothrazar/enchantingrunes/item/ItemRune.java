@@ -21,7 +21,7 @@ public class ItemRune extends Item {
   @Override
   @OnlyIn(Dist.CLIENT)
   public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-    tooltip.add(new TranslationTextComponent(this.getTranslationKey() + ".tooltip").mergeStyle(TextFormatting.DARK_GREEN));
+    tooltip.add(new TranslationTextComponent("item.enchantingrunes.rune.tooltip").mergeStyle(TextFormatting.DARK_GREEN));
   }
 
   @Override
