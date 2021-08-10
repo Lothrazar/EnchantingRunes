@@ -1,0 +1,61 @@
+{
+	"type": "crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "enchantingrunes:rune_ith"
+		},
+		{
+			"item": "enchantingrunes:rune_o"
+		},
+		{
+			"item": "enchantingrunes:rune_u"
+		},
+		{
+			"item": "enchantingrunes:rune_y"
+		},
+		{
+			"item": "enchantingrunes:rune_e"
+		},
+		{
+			"item": "enchantingrunes:rune_a"
+		},
+		{
+			"item": "minecraft:stone_sword"
+		}
+	],
+	"result": {
+		"item": "minecraft:stone_sword",
+		"count": 1,
+		"nbt": {
+			"Damage": 2,
+			"enchantingrunes": {
+				"lore": true
+			},
+			"Enchantments": [
+				{
+					"id": "cyclic:ender",
+					"lvl": 1
+				},
+				{
+					"id": "cyclic:beheading",
+					"lvl": 1
+				},
+				{
+					"id": "cyclic:disarm",
+					"lvl": 1
+				}
+			]
+		}
+	},
+	"conditions": [
+		{
+			"values": [
+				{
+					"modid": "cyclic",
+					"type": "forge:mod_loaded"
+				}
+			],
+			"type": "forge:and"
+		}
+	]
+}

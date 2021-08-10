@@ -34,9 +34,7 @@
 		"count": 1,
 		"nbt": {
 			"enchantingrunes": {
-				"lore": false,
-				"treasure": false,
-				"level": 0
+				"lore": true
 			},
 			"display": {
 				"Lore": [

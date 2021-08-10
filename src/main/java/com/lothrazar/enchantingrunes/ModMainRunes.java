@@ -29,6 +29,7 @@ public class ModMainRunes {
 
   private void setup(final FMLCommonSetupEvent event) {
     MinecraftForge.EVENT_BUS.register(new RuneEvents());
+    RuneType.initWords();
   }
 
   private void setupClient(final FMLClientSetupEvent event) {
