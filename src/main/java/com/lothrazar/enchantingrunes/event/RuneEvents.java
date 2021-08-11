@@ -3,9 +3,7 @@ package com.lothrazar.enchantingrunes.event;
 import com.lothrazar.enchantingrunes.ModMainRunes;
 import com.lothrazar.enchantingrunes.RuneType;
 import com.lothrazar.enchantingrunes.RuneWord;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.inventory.CraftingInventory;
@@ -25,6 +23,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class RuneEvents {
 
+  private static final String NBT_LORE = "Lore";
+  private static final String NBT_DISPLAY = "display";
   public static final ITag.INamedTag<Item> RUNESTONE = ItemTags.createOptional(new ResourceLocation(ModMainRunes.MODID, "runes/stone"));
 
   @SubscribeEvent
@@ -59,26 +59,25 @@ public class RuneEvents {
     if (event.getInventory() instanceof CraftingInventory) {
       CraftingInventory test = (CraftingInventory) event.getInventory();
       HashMap<Enchantment, Integer> doIt = new HashMap<Enchantment, Integer>();
-      List<RuneType> runes = new ArrayList<>();
+      String lore = "";
       for (RuneWord word : RuneType.words) {
         // does it match lol
-        System.out.println("WORD test " + word);
         if (word.matches(test)) {
-          System.out.println("WORD MATCH " + word);
           //apply this
           word.applyEnchants(doIt);
-          runes.addAll(word.getRunes());
+          lore += word.getDisplayName();
+          lore += " ";
         }
       }
-      if (doIt.size() > 0) {
+      if (doIt.size() == 0) {
+        //gotta go random
+        this.applyRandomEnch(event, crafting);
+        //no lore
+        //        crafting.getTag().remove(NBT_DISPLAY);
+        addLoreToStack(crafting, "-");
+      }
+      else {
         EnchantmentHelper.setEnchantments(doIt, crafting);
-        String lore = "";
-        for (RuneType rune : runes) {
-          ItemStack stak = new ItemStack(rune.getItem());
-          if (stak.getItem().isIn(RUNESTONE)) { //lol just in case
-            lore += stak.getDisplayName().getString();
-          }
-        }
         addLoreToStack(crafting, lore);
       }
     }
@@ -105,9 +104,9 @@ public class RuneEvents {
     ListNBT tagList = new ListNBT();
     String escaped = "{\"text\":\"" + lore + "\",\"color\":\"gold\"}";
     tagList.add(StringNBT.valueOf(escaped));
-    displayTag.put("Lore", tagList);
-    displayTag.putString("Name", "TEST");
-    crafting.getTag().put("display", displayTag);
+    displayTag.put(NBT_LORE, tagList);
+    //    displayTag.putString("Name", "TEST");
+    crafting.getTag().put(NBT_DISPLAY, displayTag);
     //    "display": {
     //      "Lore": [
     //        "[{\"translate\":\"item.enchantingrunes.rune_a\",\"color\":\"gold\"},{\"translate\":\"item.enchantingrunes.rune_c\",\"color\":\"gold\"}]"

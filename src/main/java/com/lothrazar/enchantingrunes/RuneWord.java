@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.inventory.CraftingInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -91,5 +92,13 @@ public class RuneWord {
       Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(ench.getId());
       doIt.put(enchantment, ench.getLvl());
     }
+  }
+
+  public String getDisplayName() {
+    String lore = "";
+    for (RuneType r : this.runes) {
+      lore += new ItemStack(r.getItem()).getDisplayName().getString();
+    }
+    return lore;
   }
 }

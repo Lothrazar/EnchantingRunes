@@ -26,11 +26,7 @@ public enum RuneType {
   }
 
   public static void initWords() {
-    //    "enchant:id" -> 
-    //    addWord(new RuneWord().ench("minecraft:unbreaking").rune(U));
-    //    addWord(new RuneWord().ench("minecraft:mending").rune(I).rune(E).rune(I));
-    //    addWord(new RuneWord().ench("minecraft:sharpness").rune(A).rune(E).rune(Y));
-    //    addWord(new RuneWord().ench("minecraft:looting").rune(A).rune(O).rune(Y));
+    //    "enchant:id" ->  
     //    addWord(new RuneWord().ench("minecraft:fortune").rune(E).rune(U).rune(T));
     //    addWord(new RuneWord().ench("minecraft:silk_touch").rune(E).rune(T).rune(A));
     //    addWord(new RuneWord().ench("minecraft:sweeping").rune(T).rune(Y));
@@ -118,7 +114,7 @@ public enum RuneType {
       case I:
         return RuneRegistry.RUNE_I.get();
       case T:
-        return RuneRegistry.RUNE_ITH.get();
+        return RuneRegistry.RUNE_TH.get();
       case O:
         return RuneRegistry.RUNE_O.get();
       case U:

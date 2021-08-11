@@ -23,7 +23,7 @@ public class RuneRegistry {
 
     @Override
     public ItemStack createIcon() {
-      return new ItemStack(RUNE_ITH.get());
+      return new ItemStack(RUNE_TH.get());
     }
   };
   public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ModMainRunes.MODID);
@@ -43,7 +43,7 @@ public class RuneRegistry {
   public static final RegistryObject<ItemRune> RUNE_O = ITEMS.register("rune_o", () -> new ItemRune(new Item.Properties().group(TAB)));
   public static final RegistryObject<ItemRune> RUNE_U = ITEMS.register("rune_u", () -> new ItemRune(new Item.Properties().group(TAB)));
   public static final RegistryObject<ItemRune> RUNE_Y = ITEMS.register("rune_y", () -> new ItemRune(new Item.Properties().group(TAB)));
-  public static final RegistryObject<ItemRune> RUNE_ITH = ITEMS.register("rune_th", () -> new ItemRune(new Item.Properties().group(TAB)));
+  public static final RegistryObject<ItemRune> RUNE_TH = ITEMS.register("rune_th", () -> new ItemRune(new Item.Properties().group(TAB)));
   //stone
   public static final RegistryObject<Item> BLADE_MASON = ITEMS.register("masonry_blade", () -> new KnifeItem(new Item.Properties().group(TAB)));
   public static final RegistryObject<Block> STONE_LAYERS = BLOCKS.register("stone_layer", () -> new BlockLayering(AbstractBlock.Properties.create(Material.ROCK)));

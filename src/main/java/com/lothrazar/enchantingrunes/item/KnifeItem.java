@@ -100,7 +100,7 @@ public class KnifeItem extends Item {
         RuneRegistry.RUNE_O.get(), RuneRegistry.RUNE_O.get(),
         RuneRegistry.RUNE_U.get(), RuneRegistry.RUNE_U.get(),
         RuneRegistry.RUNE_Y.get(), RuneRegistry.RUNE_Y.get(),
-        RuneRegistry.RUNE_ITH.get()
+        RuneRegistry.RUNE_TH.get()
     });
     if (dice < 0.01) {
       //first X% is stone layer
@@ -113,8 +113,8 @@ public class KnifeItem extends Item {
       switch (biome.getCategory()) {
         case JUNGLE:
           //add weight
-          pick.add(RuneRegistry.RUNE_ITH.get());
-          pick.add(RuneRegistry.RUNE_ITH.get());
+          pick.add(RuneRegistry.RUNE_TH.get());
+          pick.add(RuneRegistry.RUNE_TH.get());
           pick.add(RuneRegistry.RUNE_U.get());
           pick.add(RuneRegistry.RUNE_U.get());
         break;
@@ -141,7 +141,7 @@ public class KnifeItem extends Item {
           pick.add(RuneRegistry.RUNE_Y.get());
         break;
         case NETHER:
-          pick.add(RuneRegistry.RUNE_ITH.get());
+          pick.add(RuneRegistry.RUNE_TH.get());
           pick.add(RuneRegistry.RUNE_U.get());
           pick.add(RuneRegistry.RUNE_U.get());
         break;
@@ -153,10 +153,10 @@ public class KnifeItem extends Item {
           pick.add(RuneRegistry.RUNE_E.get());
         break;
         case THEEND:
-          pick.add(RuneRegistry.RUNE_ITH.get());
-          pick.add(RuneRegistry.RUNE_ITH.get());
-          pick.add(RuneRegistry.RUNE_ITH.get());
-          pick.add(RuneRegistry.RUNE_ITH.get());
+          pick.add(RuneRegistry.RUNE_TH.get());
+          pick.add(RuneRegistry.RUNE_TH.get());
+          pick.add(RuneRegistry.RUNE_TH.get());
+          pick.add(RuneRegistry.RUNE_TH.get());
         break;
         case BEACH:
         break;
