@@ -69,7 +69,6 @@ public class RuneWord {
 
   public boolean matches(CraftingInventory test, ItemStack crafting, Map<Integer, Boolean> used) {
     //stack being crafted can&will have enchants from previous runeword in this single craft
-    int usedHere = 0;
     for (RuneEnch e : this.enchants) {
       //is it valid
       //           is(e.getId())
@@ -80,25 +79,32 @@ public class RuneWord {
         return false;
       }
     }
+    List<Integer> usedHere = new ArrayList<>();;
     for (RuneType recipeRune : this.runes) {
       //we MUST find an R in this list. or else we return false.
       for (int i = 0; i < test.getSizeInventory(); i++) {
-        if (usedHere >= this.runes.size()) {
+        if (usedHere.size() >= this.runes.size()) {
           break; // we needed 3 runes for this word, already matched three, dont consume overflow
         }
         if (used.containsKey(i)) {
           continue; // used skip it
         }
         if (recipeRune.matches(test.getStackInSlot(i))) {
+          System.out.println(this.getDisplayName() + " partial match on slot " + i + "  ");
           //yes its used
-          used.put(i, true);
-          usedHere++;
+          usedHere.add(i);
           break;
         }
       }
     }
     // if i have 3 runes, at least that many must have been used/matched
-    return usedHere >= this.runes.size();
+    boolean fullmatch = usedHere.size() >= this.runes.size();
+    if (fullmatch) {
+      for (Integer in : usedHere) {
+        used.put(in, true);
+      }
+    }
+    return fullmatch;
   }
 
   public String getDisplayName() {

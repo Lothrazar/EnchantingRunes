@@ -11,15 +11,12 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.loot.LootPool;
-import net.minecraft.loot.TableLootEntry;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.nbt.StringNBT;
 import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.ItemCraftedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -35,28 +32,11 @@ public class RuneEvents {
     ItemStack crafting = event.getCrafting();
     if (crafting.getTag() != null && crafting.getTag().contains(ModMainRunes.MODID)) {
       //maybe the runes say apply random stuff
-      if (crafting.getChildTag(ModMainRunes.MODID).contains("level")) {}
-      //random or not, check what the lore says
-      //      if (crafting.getChildTag(ModMainRunes.MODID).contains("lore") && crafting.getChildTag(ModMainRunes.MODID).getBoolean("lore")) {
       this.applyRunelore(event, crafting);
-      //      }
-      //onlyh remove after done with it
+      //only remove after done with it
       crafting.getTag().remove(ModMainRunes.MODID);
     }
   }
-  //
-  //  private void applyRunesRandomly(ItemCraftedEvent event, ItemStack crafting) {
-  //    //maybe
-  //    Map<Enchantment, Integer> oldEnch = EnchantmentHelper.getEnchantments(crafting);
-  //    EnchantmentHelper.setEnchantments(new HashMap<Enchantment, Integer>(), crafting);
-  //    applyRandomEnch(event, crafting);
-  //    //    Map<Enchantment, Integer> newTest = EnchantmentHelper.getEnchantments(crafting);
-  //    if (oldEnch != null && !oldEnch.isEmpty()) {
-  //      this.merge(oldEnch, crafting);
-  //    }
-  //    //it was a random one, remove the lore
-  //    crafting.getTag().remove("display");
-  //  }
 
   private void applyRunelore(ItemCraftedEvent event, ItemStack crafting) {
     if (event.getInventory() instanceof CraftingInventory) {
@@ -67,13 +47,17 @@ public class RuneEvents {
       for (RuneWord word : RuneType.words) {
         // does it match lol
         if (word.matches(test, crafting, used)) {
+          System.out.println("  words matched " + word.getDisplayName() + " used so far " + used.keySet().size());
           //apply this
           for (RuneEnch ench : word.getEnchants()) {
+            System.out.println("   add enchant from match" + ench.getId());
             doIt.put(ForgeRegistries.ENCHANTMENTS.getValue(ench.getId()), ench.getLvl());
           }
           lore += word.getDisplayName();
           lore += " ";
-          System.out.println("  words matched " + word.getDisplayName());
+        }
+        else {
+          System.out.println("  NO matched " + word.getDisplayName() + " used so far " + used.keySet().size());
         }
       }
       if (doIt.size() == 0) {
@@ -94,17 +78,6 @@ public class RuneEvents {
       this.applyRandomEnch(event, crafting);
     }
   }
-  //  private void tryRuneword(ItemCraftedEvent event) {
-  //    if (event.getInventory() instanceof CraftingInventory) {
-  //      CraftingInventory test = (CraftingInventory) event.getInventory();
-  //      for (int i = 0; i < test.getSizeInventory(); i++) {
-  //        ItemStack stak = test.getStackInSlot(0);
-  //        if (stak.getItem().isIn(RUNESTONE)) {
-  //       println(i + " wsas input " + stak);
-  //        }
-  //      }
-  //    }
-  //  }
 
   public static void addLoreToStack(ItemStack crafting, String lore) {
     CompoundNBT displayTag = new CompoundNBT();
@@ -146,12 +119,4 @@ public class RuneEvents {
   //    }
   //    EnchantmentHelper.setEnchantments(newEnch, crafting);
   //  }
-
-  //  pub
-  @SubscribeEvent
-  public void onLootLoad(LootTableLoadEvent event) {
-    if (event.getName().equals(new ResourceLocation("minecraft", "granite"))) {
-      event.getTable().addPool(LootPool.builder().addEntry(TableLootEntry.builder(new ResourceLocation(ModMainRunes.MODID, "granite"))).build());
-    }
-  }
 }
