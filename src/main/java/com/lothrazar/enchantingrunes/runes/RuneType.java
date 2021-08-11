@@ -1,5 +1,6 @@
-package com.lothrazar.enchantingrunes;
+package com.lothrazar.enchantingrunes.runes;
 
+import com.lothrazar.enchantingrunes.ModMainRunes;
 import com.lothrazar.enchantingrunes.event.ConfigRuneManager;
 import java.util.ArrayList;
 import java.util.HashSet;

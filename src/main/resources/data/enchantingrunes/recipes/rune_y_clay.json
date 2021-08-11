@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" f ",
+		"fbf",
+		" f "
+	],
+	"key": {
+		"b": {
+			"tag": "enchantingrunes:runes/stone"
+		},
+		"f": {
+			"item": "minecraft:clay_ball"
+		}
+	},
+	"result": {
+		"item": "enchantingrunes:rune_y",
+		"count": 1
+	}
+}

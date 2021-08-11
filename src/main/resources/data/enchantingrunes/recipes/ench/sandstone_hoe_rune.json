@@ -26,17 +26,15 @@
 			"tag": "enchantingrunes:runes/stone"
 		},
 		{
-			"item": "minecraft:stone_pickaxe"
+			"item": "cyclic:sandstone_hoe"
 		}
 	],
 	"result": {
-		"item": "minecraft:stone_pickaxe",
+		"item": "cyclic:sandstone_hoe",
 		"count": 1,
 		"nbt": {
 			"enchantingrunes": {
-				"lore": false,
-				"treasure": false,
-				"level": 0
+				"lore": false
 			},
 			"display": {
 				"Lore": [
@@ -44,5 +42,20 @@
 				]
 			}
 		}
-	}
+	},
+	"conditions": [
+		{
+			"values": [
+				{
+					"modid": "cyclic",
+					"type": "forge:mod_loaded"
+				},
+				{
+					"item": "cyclic:sandstone_hoe",
+					"type": "forge:item_exists"
+				}
+			],
+			"type": "forge:and"
+		}
+	]
 }

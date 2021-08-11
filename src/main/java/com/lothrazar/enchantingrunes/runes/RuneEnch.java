@@ -1,4 +1,4 @@
-package com.lothrazar.enchantingrunes;
+package com.lothrazar.enchantingrunes.runes;
 
 import net.minecraft.util.ResourceLocation;
 

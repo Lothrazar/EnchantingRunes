@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "enchantingrunes:rune_blank",
     "enchantingrunes:rune_a",
     "enchantingrunes:rune_e",
     "enchantingrunes:rune_i",

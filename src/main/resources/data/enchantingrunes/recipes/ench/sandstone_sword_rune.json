@@ -26,17 +26,15 @@
 			"tag": "enchantingrunes:runes/stone"
 		},
 		{
-			"item": "pickletweaks:stone_paxel"
+			"item": "cyclic:sandstone_shovel"
 		}
 	],
 	"result": {
-		"item": "pickletweaks:stone_paxel",
+		"item": "cyclic:sandstone_shovel",
 		"count": 1,
 		"nbt": {
 			"enchantingrunes": {
-				"lore": false,
-				"treasure": false,
-				"level": 0
+				"lore": false
 			},
 			"display": {
 				"Lore": [
@@ -49,11 +47,11 @@
 		{
 			"values": [
 				{
-					"modid": "pickletweaks",
+					"modid": "cyclic",
 					"type": "forge:mod_loaded"
 				},
 				{
-					"item": "pickletweaks:stone_paxel",
+					"item": "cyclic:sandstone_shovel",
 					"type": "forge:item_exists"
 				}
 			],

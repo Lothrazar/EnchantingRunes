@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" f ",
+		"fbf",
+		" f "
+	],
+	"key": {
+		"b": {
+    "tag": "enchantingrunes:runes/stone"
+		}
+		,"f": {
+			"item": "minecraft:snow_block"
+		}
+	},
+	"result": {
+		"item": "enchantingrunes:rune_e",
+		"count": 1
+	}
+}

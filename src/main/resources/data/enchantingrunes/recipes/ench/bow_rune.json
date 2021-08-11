@@ -26,17 +26,15 @@
 			"tag": "enchantingrunes:runes/stone"
 		},
 		{
-			"item": "cyclic:sandstone_shovel"
+			"item": "minecraft:bow"
 		}
 	],
 	"result": {
-		"item": "cyclic:sandstone_shovel",
+		"item": "minecraft:bow",
 		"count": 1,
 		"nbt": {
 			"enchantingrunes": {
-				"lore": false,
-				"treasure": false,
-				"level": 0
+				"lore": true
 			},
 			"display": {
 				"Lore": [
@@ -44,20 +42,5 @@
 				]
 			}
 		}
-	},
-	"conditions": [
-		{
-			"values": [
-				{
-					"modid": "cyclic",
-					"type": "forge:mod_loaded"
-				},
-				{
-					"item": "cyclic:sandstone_shovel",
-					"type": "forge:item_exists"
-				}
-			],
-			"type": "forge:and"
-		}
-	]
+	}
 }

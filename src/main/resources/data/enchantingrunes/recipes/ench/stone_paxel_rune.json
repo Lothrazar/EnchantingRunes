@@ -26,17 +26,15 @@
 			"tag": "enchantingrunes:runes/stone"
 		},
 		{
-			"item": "cyclic:sandstone_hoe"
+			"item": "pickletweaks:stone_paxel"
 		}
 	],
 	"result": {
-		"item": "cyclic:sandstone_hoe",
+		"item": "pickletweaks:stone_paxel",
 		"count": 1,
 		"nbt": {
 			"enchantingrunes": {
-				"lore": false,
-				"treasure": false,
-				"level": 0
+				"lore": false
 			},
 			"display": {
 				"Lore": [
@@ -49,11 +47,11 @@
 		{
 			"values": [
 				{
-					"modid": "cyclic",
+					"modid": "pickletweaks",
 					"type": "forge:mod_loaded"
 				},
 				{
-					"item": "cyclic:sandstone_hoe",
+					"item": "pickletweaks:stone_paxel",
 					"type": "forge:item_exists"
 				}
 			],

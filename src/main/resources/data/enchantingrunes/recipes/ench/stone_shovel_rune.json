@@ -11,32 +11,15 @@
 			"tag": "enchantingrunes:runes/stone"
 		},
 		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"item": "minecraft:stone_axe"
+			"item": "minecraft:stone_shovel"
 		}
 	],
 	"result": {
-		"item": "minecraft:stone_axe",
+		"item": "minecraft:stone_shovel",
 		"count": 1,
 		"nbt": {
 			"enchantingrunes": {
-				"lore": true,
-				"treasure": false,
-				"level": 0
+				"lore": false
 			},
 			"display": {
 				"Lore": [

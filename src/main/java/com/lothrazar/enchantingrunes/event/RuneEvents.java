@@ -1,9 +1,11 @@
 package com.lothrazar.enchantingrunes.event;
 
 import com.lothrazar.enchantingrunes.ModMainRunes;
-import com.lothrazar.enchantingrunes.RuneType;
-import com.lothrazar.enchantingrunes.RuneWord;
+import com.lothrazar.enchantingrunes.runes.RuneEnch;
+import com.lothrazar.enchantingrunes.runes.RuneType;
+import com.lothrazar.enchantingrunes.runes.RuneWord;
 import java.util.HashMap;
+import java.util.Map;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.inventory.CraftingInventory;
@@ -20,6 +22,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.ItemCraftedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class RuneEvents {
 
@@ -60,16 +63,21 @@ public class RuneEvents {
       CraftingInventory test = (CraftingInventory) event.getInventory();
       HashMap<Enchantment, Integer> doIt = new HashMap<Enchantment, Integer>();
       String lore = "";
+      Map<Integer, Boolean> used = new HashMap<>();
       for (RuneWord word : RuneType.words) {
         // does it match lol
-        if (word.matches(test)) {
+        if (word.matches(test, crafting, used)) {
           //apply this
-          word.applyEnchants(doIt);
+          for (RuneEnch ench : word.getEnchants()) {
+            doIt.put(ForgeRegistries.ENCHANTMENTS.getValue(ench.getId()), ench.getLvl());
+          }
           lore += word.getDisplayName();
           lore += " ";
+          System.out.println("  words matched " + word.getDisplayName());
         }
       }
       if (doIt.size() == 0) {
+        System.out.println("NO words matched go random");
         //gotta go random
         this.applyRandomEnch(event, crafting);
         //no lore

@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" f ",
+		"fbf",
+		" f "
+	],
+	"key": {
+		"b": {
+    "tag": "enchantingrunes:runes/stone"
+		}
+		,"f": {
+			"tag": "minecraft:small_flowers"
+		}
+	},
+	"result": {
+		"item": "enchantingrunes:rune_a",
+		"count": 1
+	}
+}

@@ -22,7 +22,13 @@ public class ConfigRuneManager {
     CFG.comment("General settings").push(ModMainRunes.MODID);
     String[] deflist = new String[] { "minecraft:sharpness->aei", "minecraft:sharpness->aeo", "minecraft:sharpness->au", "minecraft:smite->ou", "minecraft:unbreaking->eu"
         //
-        , "minecraft:mending->iei", "minecraft:looting->aot", "minecraft:looting->eut", "minecraft:silk_touch->eta", "minecraft:sweeping->ty"
+        , "minecraft:mending->iei", "minecraft:looting->aot", "minecraft:looting->eut", "minecraft:silk_touch->eta", "minecraft:sweeping->ty", "minecraft:efficiency->tay"
+        //
+        , "cyclic:auto_smelt->eta", "cyclic:beheading->ey", "cyclic:life_leech->uit", "cyclic:disarm->tao", "cyclic:ender->et", "cyclic:growth->toy", "cyclic:experience_boost->aoi", "cyclic:venom->iou"
+        //
+        , "cyclic:magnet->tat", "ensorcellation:soulbound->iia"
+        //
+        , "minecraft:vanishing_curse->ooo", "ensorcellation:curse_mercy->aaa"
     };
     //array of strings 
     THEWORDS = CFG.comment("All rune words found within recipes.  WHen crafting runes with a tool, if no runewords are found then a random enchantment might be chosen").defineList("rune_words", Arrays.asList(deflist),
