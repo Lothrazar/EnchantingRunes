@@ -1,7 +1,7 @@
 package com.lothrazar.enchantingrunes.item;
 
+import com.lothrazar.enchantingrunes.RuneRegistry;
 import com.lothrazar.enchantingrunes.block.BlockLayering;
-import com.lothrazar.enchantingrunes.runes.RuneRegistry;
 import java.util.List;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;

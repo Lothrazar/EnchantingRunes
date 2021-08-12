@@ -28,4 +28,9 @@ public class RuneEnch {
   public void setId(ResourceLocation id) {
     this.id = id;
   }
+
+  @Override
+  public String toString() {
+    return (lvl == 1) ? id.toString() : id.toString() + ":" + lvl;
+  }
 }

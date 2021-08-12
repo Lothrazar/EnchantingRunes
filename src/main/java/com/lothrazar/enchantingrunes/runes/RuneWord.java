@@ -1,5 +1,6 @@
 package com.lothrazar.enchantingrunes.runes;
 
+import com.lothrazar.enchantingrunes.item.RuneItem;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,6 +9,8 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class RuneWord {
@@ -75,24 +78,29 @@ public class RuneWord {
       Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(e.getId());
       if (!enchantment.canApply(crafting)) {
         //ok then yes
-        System.out.println("an NO CANNOT apply to " + enchantment);
+        //        .println("an NO CANNOT apply to " + enchantment);
         return false;
       }
     }
-    List<Integer> usedHere = new ArrayList<>();;
+    List<Integer> usedHere = new ArrayList<>();
     for (RuneType recipeRune : this.runes) {
       //we MUST find an R in this list. or else we return false.
+      boolean foundThis = false;
       for (int i = 0; i < test.getSizeInventory(); i++) {
+        if (foundThis) {
+          break;
+        }
         if (usedHere.size() >= this.runes.size()) {
           break; // we needed 3 runes for this word, already matched three, dont consume overflow
         }
-        if (used.containsKey(i)) {
+        if (used.containsKey(i) || usedHere.contains(i)) {
           continue; // used skip it
         }
         if (recipeRune.matches(test.getStackInSlot(i))) {
-          System.out.println(this.getDisplayName() + " partial match on slot " + i + "  ");
+          //.println(this.getDisplayName() + " partial match on slot " + i + "  ");
           //yes its used
           usedHere.add(i);
+          foundThis = true;
           break;
         }
       }
@@ -113,5 +121,22 @@ public class RuneWord {
       lore += new ItemStack(r.getItem()).getDisplayName().getString();
     }
     return lore;
+  }
+
+  public boolean contains(RuneItem itemRune) {
+    for (RuneType r : this.runes) {
+      if (itemRune == r.getItem()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public ITextComponent getMessage() {
+    String enchs = "";
+    for (RuneEnch e : this.enchants) {
+      enchs += e.toString();
+    }
+    return new StringTextComponent(this.getDisplayName() + " :: " + enchs);
   }
 }

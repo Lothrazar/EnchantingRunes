@@ -44,29 +44,38 @@ public class RuneEvents {
       HashMap<Enchantment, Integer> doIt = new HashMap<Enchantment, Integer>();
       String lore = "";
       Map<Integer, Boolean> used = new HashMap<>();
-      for (RuneWord word : RuneType.words) {
+      for (RuneWord word : RuneType.WORDS) {
         // does it match lol
         if (word.matches(test, crafting, used)) {
-          System.out.println("  words matched " + word.getDisplayName() + " used so far " + used.keySet().size());
+          //.println("  words matched " + word.getDisplayName() + " used so far " + used.keySet().size());
           //apply this
           for (RuneEnch ench : word.getEnchants()) {
-            System.out.println("   add enchant from match" + ench.getId());
+            //.println("   add enchant from match" + ench.getId());
             doIt.put(ForgeRegistries.ENCHANTMENTS.getValue(ench.getId()), ench.getLvl());
           }
           lore += word.getDisplayName();
           lore += " ";
         }
         else {
-          System.out.println("  NO matched " + word.getDisplayName() + " used so far " + used.keySet().size());
+          //.println("  NO matched " + word.getDisplayName() + " used so far " + used.keySet().size());
+        }
+      }
+      //copy damage, random or not
+      for (int i = 0; i < test.getSizeInventory(); i++) {
+        ItemStack oldStack = test.getStackInSlot(i);
+        if (oldStack.getItem() == crafting.getItem()) {
+          System.out.println("Durability test; old is " + oldStack.getDamage());
+          crafting.setDamage(oldStack.getDamage());
         }
       }
       if (doIt.size() == 0) {
-        System.out.println("NO words matched go random");
+        //.println("NO words matched go random");
         //gotta go random
         this.applyRandomEnch(event, crafting);
         //no lore
         //        crafting.getTag().remove(NBT_DISPLAY);
         addLoreToStack(crafting, "-");
+        //done now check damage
       }
       else {
         EnchantmentHelper.setEnchantments(doIt, crafting);

@@ -1,8 +1,7 @@
-package com.lothrazar.enchantingrunes.event;
+package com.lothrazar.enchantingrunes;
 
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
-import com.lothrazar.enchantingrunes.ModMainRunes;
 import java.util.Arrays;
 import java.util.List;
 import net.minecraftforge.common.ForgeConfigSpec;
@@ -26,7 +25,7 @@ public class ConfigRuneManager {
         //
         , "cyclic:auto_smelt->eta", "cyclic:beheading->ey", "cyclic:life_leech->uit", "cyclic:disarm->tao", "cyclic:ender->et", "cyclic:growth->toy", "cyclic:experience_boost->aoi", "cyclic:venom->iou"
         //
-        , "cyclic:magnet->tat", "ensorcellation:soulbound->iia"
+        , "cyclic:magnet->tat", "ensorcellation:soulbound->iia", "ensorcellation:magic_edge->aiy", "ensorcellation:frost_aspect->tuy"
         //
         , "minecraft:vanishing_curse->ooo", "ensorcellation:curse_mercy->aaa"
     };

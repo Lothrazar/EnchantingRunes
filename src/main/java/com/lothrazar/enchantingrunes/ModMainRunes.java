@@ -1,8 +1,6 @@
 package com.lothrazar.enchantingrunes;
 
-import com.lothrazar.enchantingrunes.event.ConfigRuneManager;
 import com.lothrazar.enchantingrunes.event.RuneEvents;
-import com.lothrazar.enchantingrunes.runes.RuneRegistry;
 import com.lothrazar.enchantingrunes.runes.RuneType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
