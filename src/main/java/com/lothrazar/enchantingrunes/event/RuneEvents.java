@@ -64,7 +64,7 @@ public class RuneEvents {
       for (int i = 0; i < test.getSizeInventory(); i++) {
         ItemStack oldStack = test.getStackInSlot(i);
         if (oldStack.getItem() == crafting.getItem()) {
-          System.out.println("Durability test; old is " + oldStack.getDamage());
+          //.println("Durability test; old is " + oldStack.getDamage());
           crafting.setDamage(oldStack.getDamage());
         }
       }

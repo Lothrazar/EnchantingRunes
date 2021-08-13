@@ -11,26 +11,11 @@
 			"tag": "enchantingrunes:runes/stone"
 		},
 		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"item": "minecraft:bow"
+			"item": "minecraft:wooden_shovel"
 		}
 	],
 	"result": {
-		"item": "minecraft:bow",
+		"item": "minecraft:wooden_shovel",
 		"count": 1,
 		"nbt": {
 			"enchantingrunes": {

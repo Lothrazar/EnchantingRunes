@@ -11,11 +11,11 @@
 			"tag": "enchantingrunes:runes/stone"
 		},
 		{
-			"item": "minecraft:wooden_axe"
+			"item": "minecraft:wooden_hoe"
 		}
 	],
 	"result": {
-		"item": "minecraft:wooden_axe",
+		"item": "minecraft:wooden_hoe",
 		"count": 1,
 		"nbt": {
 			"enchantingrunes": {

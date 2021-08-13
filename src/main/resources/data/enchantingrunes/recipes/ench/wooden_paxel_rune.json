@@ -11,15 +11,15 @@
 			"tag": "enchantingrunes:runes/stone"
 		},
 		{
-			"item": "minecraft:wooden_axe"
+			"item": "pickletweaks:wooden_paxel"
 		}
 	],
 	"result": {
-		"item": "minecraft:wooden_axe",
+		"item": "pickletweaks:wooden_paxel",
 		"count": 1,
 		"nbt": {
 			"enchantingrunes": {
-				"lore": true
+				"lore": false
 			},
 			"display": {
 				"Lore": [
@@ -27,5 +27,20 @@
 				]
 			}
 		}
-	}
+	},
+	"conditions": [
+		{
+			"values": [
+				{
+					"modid": "pickletweaks",
+					"type": "forge:mod_loaded"
+				},
+				{
+					"item": "pickletweaks:wooden_paxel",
+					"type": "forge:item_exists"
+				}
+			],
+			"type": "forge:and"
+		}
+	]
 }
