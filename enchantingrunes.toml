@@ -1,0 +1,6 @@
+
+#General settings
+[enchantingrunes]
+	#All rune words found within recipes.  WHen crafting runes with a tool, if no runewords are found then a random enchantment might be chosen
+	rune_words = ["minecraft:sharpness->aei", "minecraft:sharpness->aeo", "minecraft:sharpness->au", "minecraft:smite->ou", "minecraft:unbreaking->eu", "minecraft:mending->iei", "minecraft:looting->aot", "minecraft:looting->eut", "minecraft:silk_touch->eta", "minecraft:sweeping->ty", "minecraft:efficiency->tay", "cyclic:auto_smelt->eta", "cyclic:beheading->ey", "cyclic:life_leech->uit", "cyclic:disarm->tao", "cyclic:ender->et", "cyclic:growth->toy", "cyclic:experience_boost->aoi", "cyclic:venom->iou", "cyclic:magnet->tat", "ensorcellation:soulbound->iia", "ensorcellation:magic_edge->aiy", "ensorcellation:frost_aspect->tuy", "minecraft:vanishing_curse->ooo", "ensorcellation:curse_mercy->aaa", "flowingagony:cutting_watermelon_dream->uty", "flowingagony:morirs_deathwish->uiuy", "flowingagony:nimble_finger->oit", "flowingagony:morirs_lifebound->ato", "flowingagony:trickster->tty", "flowingagony:fresh_revenge->eeth", "flowingagony:paper_brain->eoiy", "flowingagony:last_sweet_dream->tiy", "flowingagony:carefully_identified->tyi", "flowingagony:shock_therapy->aiy"]
+
