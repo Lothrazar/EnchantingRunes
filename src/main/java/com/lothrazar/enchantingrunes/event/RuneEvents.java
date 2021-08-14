@@ -45,6 +45,9 @@ public class RuneEvents {
       String lore = "";
       Map<Integer, Boolean> used = new HashMap<>();
       for (RuneWord word : RuneType.WORDS) {
+        if (word == null) {
+          continue; // ??
+        }
         // does it match lol
         if (word.matches(test, crafting, used)) {
           //.println("  words matched " + word.getDisplayName() + " used so far " + used.keySet().size());

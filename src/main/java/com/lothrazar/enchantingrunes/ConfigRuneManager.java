@@ -27,7 +27,11 @@ public class ConfigRuneManager {
         //
         , "cyclic:magnet->tat", "ensorcellation:soulbound->iia", "ensorcellation:magic_edge->aiy", "ensorcellation:frost_aspect->tuy"
         //
-        , "minecraft:vanishing_curse->ooo", "ensorcellation:curse_mercy->aaa"
+        , "minecraft:vanishing_curse->ooo", "ensorcellation:curse_mercy->aaa", "flowingagony:cutting_watermelon_dream->uty", "flowingagony:morirs_deathwish->uiuy"
+        //MGX 
+        , "flowingagony:nimble_finger->oit", "flowingagony:morirs_lifebound->ato", "flowingagony:trickster->tty", "flowingagony:fresh_revenge->eeth", "flowingagony:paper_brain->eoiy"
+        //
+        , "flowingagony:last_sweet_dream->tiy", "flowingagony:carefully_identified->tyi", "flowingagony:shock_therapy->aiy"
     };
     //array of strings 
     THEWORDS = CFG.comment("All rune words found within recipes.  WHen crafting runes with a tool, if no runewords are found then a random enchantment might be chosen").defineList("rune_words", Arrays.asList(deflist),

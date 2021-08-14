@@ -72,15 +72,25 @@ public class RuneWord {
 
   public boolean matches(CraftingInventory test, ItemStack crafting, Map<Integer, Boolean> used) {
     //stack being crafted can&will have enchants from previous runeword in this single craft
+    int enchantsValid = 0;
     for (RuneEnch e : this.enchants) {
-      //is it valid
-      //           is(e.getId())
+      //is it valid 
+      if (!ForgeRegistries.ENCHANTMENTS.containsKey(e.getId())) {
+        continue;
+      }
       Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(e.getId());
+      if (enchantment == null) {
+        continue;
+      }
       if (!enchantment.canApply(crafting)) {
         //ok then yes
         //        .println("an NO CANNOT apply to " + enchantment);
-        return false;
+        continue;
       }
+      enchantsValid++;
+    }
+    if (enchantsValid == 0) {
+      return false; //kinda valid but zero valid enchants are registered
     }
     List<Integer> usedHere = new ArrayList<>();
     for (RuneType recipeRune : this.runes) {
