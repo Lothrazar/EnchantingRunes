@@ -115,6 +115,7 @@ dependencies {
 	 	implementation fg.deobf("curse.maven:titanium-287342:3346366")
     implementation fg.deobf("curse.maven:industrial-foregoing-266515:3386008")
 	  implementation fg.deobf("curse.maven:mob-grinding-utils-254241:3361660")
+	  implementation fg.deobf("curse.maven:marblegates-exotic-enchantment-flowing-agony-478899:3414171")
     
   //  implementation fg.deobf("curse.maven:ctm-267602:3137659")
   //  implementation fg.deobf("curse.maven:storage-drawers-223852:3180569")
