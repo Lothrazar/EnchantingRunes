@@ -1,0 +1,46 @@
+{
+	"type": "crafting_shapeless",
+	"ingredients": [
+		{
+			"tag": "enchantingrunes:runes/stone"
+		},
+		{
+			"tag": "enchantingrunes:runes/stone"
+		},
+		{
+			"tag": "enchantingrunes:runes/stone"
+		},
+		{
+			"tag": "enchantingrunes:runes/stone"
+		},
+		{
+			"tag": "enchantingrunes:runes/stone"
+		},
+		{
+			"tag": "enchantingrunes:runes/stone"
+		},
+		{
+			"tag": "enchantingrunes:runes/stone"
+		},
+		{
+			"tag": "enchantingrunes:runes/stone"
+		},
+		{
+			"item": "minecraft:leather_helmet"
+		}
+	],
+	"result": {
+		"item": "minecraft:leather_helmet",
+		"count": 1,
+		"nbt": {
+			"enchantingrunes": {
+				"lore": true
+			},
+			"display": {
+				"Lore": [
+					"{\"translate\":\"item.enchantingrunes.random\",\"color\":\"gold\"}"
+				]
+			}
+		}
+	}
+}

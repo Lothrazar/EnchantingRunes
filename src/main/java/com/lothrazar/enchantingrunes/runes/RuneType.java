@@ -31,7 +31,7 @@ public enum RuneType {
         parseWord(s);
       }
       catch (Exception e) {
-        ModMainRunes.LOGGER.info("Invalid runeword error", e);
+        ModMainRunes.LOGGER.info("Invalid runeword error " + s, e);
       }
     }
   }
