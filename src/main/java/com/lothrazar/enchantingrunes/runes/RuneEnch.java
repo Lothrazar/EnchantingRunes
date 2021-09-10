@@ -1,6 +1,6 @@
 package com.lothrazar.enchantingrunes.runes;
 
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 
 public class RuneEnch {
 

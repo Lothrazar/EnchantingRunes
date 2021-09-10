@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.inventory.CraftingInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.inventory.CraftingContainer;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class RuneWord {
@@ -42,7 +42,7 @@ public class RuneWord {
   }
 
   public RuneWord ench(int lvl, String id) {
-    enchants.add(new RuneEnch(lvl, ResourceLocation.tryCreate(id)));
+    enchants.add(new RuneEnch(lvl, ResourceLocation.tryParse(id)));
     return this;
   }
 
@@ -70,7 +70,7 @@ public class RuneWord {
     return s;
   }
 
-  public boolean matches(CraftingInventory test, ItemStack crafting, Map<Integer, Boolean> used) {
+  public boolean matches(CraftingContainer test, ItemStack crafting, Map<Integer, Boolean> used) {
     //stack being crafted can&will have enchants from previous runeword in this single craft
     int enchantsValid = 0;
     for (RuneEnch e : this.enchants) {
@@ -82,7 +82,7 @@ public class RuneWord {
       if (enchantment == null) {
         continue;
       }
-      if (!enchantment.canApply(crafting)) {
+      if (!enchantment.canEnchant(crafting)) {
         //ok then yes
         //        .println("an NO CANNOT apply to " + enchantment);
         continue;
@@ -96,7 +96,7 @@ public class RuneWord {
     for (RuneType recipeRune : this.runes) {
       //we MUST find an R in this list. or else we return false.
       boolean foundThis = false;
-      for (int i = 0; i < test.getSizeInventory(); i++) {
+      for (int i = 0; i < test.getContainerSize(); i++) {
         if (foundThis) {
           break;
         }
@@ -106,7 +106,7 @@ public class RuneWord {
         if (used.containsKey(i) || usedHere.contains(i)) {
           continue; // used skip it
         }
-        if (recipeRune.matches(test.getStackInSlot(i))) {
+        if (recipeRune.matches(test.getItem(i))) {
           //.println(this.getDisplayName() + " partial match on slot " + i + "  ");
           //yes its used
           usedHere.add(i);
@@ -128,7 +128,7 @@ public class RuneWord {
   public String getDisplayName() {
     String lore = "";
     for (RuneType r : this.runes) {
-      lore += new ItemStack(r.getItem()).getDisplayName().getString();
+      lore += new ItemStack(r.getItem()).getHoverName().getString();
     }
     return lore;
   }
@@ -142,11 +142,11 @@ public class RuneWord {
     return false;
   }
 
-  public ITextComponent getMessage() {
+  public Component getMessage() {
     String enchs = "";
     for (RuneEnch e : this.enchants) {
       enchs += e.toString();
     }
-    return new StringTextComponent(this.getDisplayName() + " :: " + enchs);
+    return new TextComponent(this.getDisplayName() + " :: " + enchs);
   }
 }

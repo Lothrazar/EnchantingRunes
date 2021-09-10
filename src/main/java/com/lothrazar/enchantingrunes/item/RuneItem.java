@@ -4,17 +4,17 @@ import com.lothrazar.enchantingrunes.RuneRegistry;
 import com.lothrazar.enchantingrunes.runes.RuneType;
 import com.lothrazar.enchantingrunes.runes.RuneWord;
 import java.util.List;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.item.Rarity;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -28,8 +28,8 @@ public class RuneItem extends Item {
 
   @Override
   @OnlyIn(Dist.CLIENT)
-  public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-    tooltip.add(new TranslationTextComponent("item.enchantingrunes.rune.tooltip").mergeStyle(TextFormatting.DARK_GREEN));
+  public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+    tooltip.add(new TranslatableComponent("item.enchantingrunes.rune.tooltip").withStyle(ChatFormatting.DARK_GREEN));
   }
 
   @Override
@@ -38,20 +38,20 @@ public class RuneItem extends Item {
   }
 
   @Override
-  public ActionResultType onItemUse(ItemUseContext context) {
-    PlayerEntity player = context.getPlayer();
-    if (!player.world.isRemote || player.getCooldownTracker().hasCooldown(this)) {
-      return ActionResultType.PASS;
+  public InteractionResult useOn(UseOnContext context) {
+    Player player = context.getPlayer();
+    if (!player.level.isClientSide || player.getCooldowns().isOnCooldown(this)) {
+      return InteractionResult.PASS;
     }
     //get all runes for this 
-    player.sendMessage(context.getItem().getDisplayName(), player.getUniqueID());
+    player.sendMessage(context.getItemInHand().getHoverName(), player.getUUID());
     for (RuneWord w : RuneType.WORDS) {
       //do i match it
       if (w.contains(this)) {
-        player.sendMessage(w.getMessage(), player.getUniqueID());
+        player.sendMessage(w.getMessage(), player.getUUID());
       }
     }
-    player.getCooldownTracker().setCooldown(this, COOLDOWN);
-    return super.onItemUse(context);
+    player.getCooldowns().addCooldown(this, COOLDOWN);
+    return super.useOn(context);
   }
 }

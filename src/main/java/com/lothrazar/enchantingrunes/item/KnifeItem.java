@@ -3,23 +3,23 @@ package com.lothrazar.enchantingrunes.item;
 import com.lothrazar.enchantingrunes.RuneRegistry;
 import com.lothrazar.enchantingrunes.block.BlockLayering;
 import java.util.List;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -28,68 +28,68 @@ public class KnifeItem extends Item {
   private static final int COOLDOWN = 8;
 
   public KnifeItem(Properties properties) {
-    super(properties.maxDamage(64 * 2));
+    super(properties.durability(64 * 2));
   }
 
   @Override
   @OnlyIn(Dist.CLIENT)
-  public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-    tooltip.add(new TranslationTextComponent(this.getTranslationKey() + ".tooltip").mergeStyle(TextFormatting.GRAY));
+  public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+    tooltip.add(new TranslatableComponent(this.getDescriptionId() + ".tooltip").withStyle(ChatFormatting.GRAY));
   }
 
   @Override
-  public ActionResultType onItemUse(ItemUseContext context) {
-    PlayerEntity player = context.getPlayer();
-    if (player.getCooldownTracker().hasCooldown(this)) {
-      return ActionResultType.PASS;
+  public InteractionResult useOn(UseOnContext context) {
+    Player player = context.getPlayer();
+    if (player.getCooldowns().isOnCooldown(this)) {
+      return InteractionResult.PASS;
     }
-    if (context.getFace() == Direction.DOWN) {
+    if (context.getClickedFace() == Direction.DOWN) {
       //sides and top ok
-      return ActionResultType.PASS;
+      return InteractionResult.PASS;
     }
-    World world = context.getWorld();
-    BlockPos pos = context.getPos();
+    Level world = context.getLevel();
+    BlockPos pos = context.getClickedPos();
     BlockState state = world.getBlockState(pos);
-    ItemStack held = context.getItem();
+    ItemStack held = context.getItemInHand();
     boolean valid = this.isValid(context);
     if (valid) {
-      player.getCooldownTracker().setCooldown(this, COOLDOWN);
-      player.swingArm(context.getHand());
-      world.playSound(player, pos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundCategory.BLOCKS, 1, 1);
-      held.damageItem(1, player, p -> p.setHeldItem(context.getHand(), ItemStack.EMPTY));
+      player.getCooldowns().addCooldown(this, COOLDOWN);
+      player.swing(context.getHand());
+      world.playSound(player, pos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundSource.BLOCKS, 1, 1);
+      held.hurtAndBreak(1, player, p -> p.setItemInHand(context.getHand(), ItemStack.EMPTY));
       dropItem(context);
       reduceLayer(world, pos, state);
-      return ActionResultType.SUCCESS;
+      return InteractionResult.SUCCESS;
     }
-    return ActionResultType.PASS;
+    return InteractionResult.PASS;
   }
 
-  private boolean isValid(ItemUseContext context) {
-    World world = context.getWorld();
-    BlockPos pos = context.getPos();
+  private boolean isValid(UseOnContext context) {
+    Level world = context.getLevel();
+    BlockPos pos = context.getClickedPos();
     BlockState state = world.getBlockState(pos);
     boolean validStone = state.getBlock() == Blocks.STONE_SLAB || state.getBlock() == Blocks.STONE || state.getBlock() == RuneRegistry.STONE_LAYERS.get();
     return validStone;
   }
 
-  private void reduceLayer(World world, BlockPos pos, BlockState state) {
+  private void reduceLayer(Level world, BlockPos pos, BlockState state) {
     final int fullLay = 8;
-    int oldLayer = state.hasProperty(BlockLayering.LAYERS) ? state.get(BlockLayering.LAYERS) : fullLay;
+    int oldLayer = state.hasProperty(BlockLayering.LAYERS) ? state.getValue(BlockLayering.LAYERS) : fullLay;
     if (state.getBlock() == Blocks.STONE_SLAB) {
       oldLayer = fullLay / 2;
     }
     int newLayer = oldLayer - 1;
     if (newLayer > 0) {
-      world.setBlockState(pos, RuneRegistry.STONE_LAYERS.get().getDefaultState().with(BlockLayering.LAYERS, newLayer));
+      world.setBlockAndUpdate(pos, RuneRegistry.STONE_LAYERS.get().defaultBlockState().setValue(BlockLayering.LAYERS, newLayer));
     }
     else {
-      world.setBlockState(pos, Blocks.AIR.getDefaultState());
+      world.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
     }
   }
 
-  private void dropItem(ItemUseContext context) { //flip a coin; if pass then drop one
-    World world = context.getWorld();
-    BlockPos pos = context.getPos();
+  private void dropItem(UseOnContext context) { //flip a coin; if pass then drop one
+    Level world = context.getLevel();
+    BlockPos pos = context.getClickedPos();
     dropHere(world, pos, new ItemStack(RuneRegistry.RUNE_BLANK.get()));
     //TODO: reuse biome RNG stuff in future maybe
     //    final double dice = world.rand.nextDouble();
@@ -180,9 +180,9 @@ public class KnifeItem extends Item {
     //    }
   }
 
-  private void dropHere(World world, BlockPos pos, ItemStack rune) {
-    if (!world.isRemote) {
-      world.addEntity(new ItemEntity(world, pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F, rune));
+  private void dropHere(Level world, BlockPos pos, ItemStack rune) {
+    if (!world.isClientSide) {
+      world.addFreshEntity(new ItemEntity(world, pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F, rune));
     }
   }
 }

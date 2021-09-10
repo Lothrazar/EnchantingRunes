@@ -6,17 +6,17 @@ import com.lothrazar.enchantingrunes.runes.RuneType;
 import com.lothrazar.enchantingrunes.runes.RuneWord;
 import java.util.HashMap;
 import java.util.Map;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.inventory.CraftingInventory;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.ListNBT;
-import net.minecraft.nbt.StringNBT;
-import net.minecraft.tags.ITag;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.StringTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.tags.Tag;
+import net.minecraft.world.inventory.CraftingContainer;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.entity.player.PlayerEvent.ItemCraftedEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -25,7 +25,7 @@ public class RuneEvents {
 
   private static final String NBT_LORE = "Lore";
   private static final String NBT_DISPLAY = "display";
-  public static final ITag.INamedTag<Item> RUNESTONE = ItemTags.createOptional(new ResourceLocation(ModMainRunes.MODID, "runes/stone"));
+  public static final Tag.Named<Item> RUNESTONE = ItemTags.createOptional(new ResourceLocation(ModMainRunes.MODID, "runes/stone"));
 
   @SubscribeEvent
   public void test(ItemCraftedEvent event) {
@@ -39,8 +39,8 @@ public class RuneEvents {
   }
 
   private void applyRunelore(ItemCraftedEvent event, ItemStack crafting) {
-    if (event.getInventory() instanceof CraftingInventory) {
-      CraftingInventory test = (CraftingInventory) event.getInventory();
+    if (event.getInventory() instanceof CraftingContainer) {
+      CraftingContainer test = (CraftingContainer) event.getInventory();
       HashMap<Enchantment, Integer> doIt = new HashMap<Enchantment, Integer>();
       String lore = "";
       Map<Integer, Boolean> used = new HashMap<>();
@@ -64,11 +64,11 @@ public class RuneEvents {
         }
       }
       //copy damage, random or not
-      for (int i = 0; i < test.getSizeInventory(); i++) {
-        ItemStack oldStack = test.getStackInSlot(i);
+      for (int i = 0; i < test.getContainerSize(); i++) {
+        ItemStack oldStack = test.getItem(i);
         if (oldStack.getItem() == crafting.getItem()) {
           //.println("Durability test; old is " + oldStack.getDamage());
-          crafting.setDamage(oldStack.getDamage());
+          crafting.setDamageValue(oldStack.getDamageValue());
         }
       }
       if (doIt.size() == 0) {
@@ -92,11 +92,11 @@ public class RuneEvents {
   }
 
   public static void addLoreToStack(ItemStack crafting, String lore) {
-    CompoundNBT displayTag = new CompoundNBT();
+    CompoundTag displayTag = new CompoundTag();
     //      displayTag.pu
-    ListNBT tagList = new ListNBT();
+    ListTag tagList = new ListTag();
     String escaped = "{\"text\":\"" + lore + "\",\"color\":\"gold\"}";
-    tagList.add(StringNBT.valueOf(escaped));
+    tagList.add(StringTag.valueOf(escaped));
     displayTag.put(NBT_LORE, tagList);
     //    displayTag.putString("Name", "TEST");
     crafting.getTag().put(NBT_DISPLAY, displayTag);
@@ -109,7 +109,7 @@ public class RuneEvents {
 
   private void applyRandomEnch(ItemCraftedEvent event, ItemStack crafting) {
     //    CompoundNBT tag = crafting.getChildTag(ModMainRunes.MODID);
-    crafting = EnchantmentHelper.addRandomEnchantment(event.getPlayer().world.rand, crafting, 1, false);
+    crafting = EnchantmentHelper.enchantItem(event.getPlayer().level.random, crafting, 1, false);
   }
   //  private void merge(Map<Enchantment, Integer> oldEnch, ItemStack crafting) {
   //    Map<Enchantment, Integer> newEnch = EnchantmentHelper.getEnchantments(crafting);
