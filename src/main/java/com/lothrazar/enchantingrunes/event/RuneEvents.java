@@ -12,6 +12,7 @@ import net.minecraft.nbt.StringTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -25,7 +26,7 @@ public class RuneEvents {
 
   private static final String NBT_LORE = "Lore";
   private static final String NBT_DISPLAY = "display";
-  public static final Tag.Named<Item> RUNESTONE = ItemTags.createOptional(new ResourceLocation(ModMainRunes.MODID, "runes/stone"));
+  public static final TagKey<Item> RUNESTONE = ItemTags.create(new ResourceLocation(ModMainRunes.MODID, "runes/stone"));
 
   @SubscribeEvent
   public void test(ItemCraftedEvent event) {
