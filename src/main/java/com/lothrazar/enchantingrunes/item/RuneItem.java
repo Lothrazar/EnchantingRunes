@@ -1,12 +1,11 @@
 package com.lothrazar.enchantingrunes.item;
 
+import java.util.List;
 import com.lothrazar.enchantingrunes.RuneRegistry;
 import com.lothrazar.enchantingrunes.runes.RuneType;
 import com.lothrazar.enchantingrunes.runes.RuneWord;
-import java.util.List;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -29,7 +28,7 @@ public class RuneItem extends Item {
   @Override
   @OnlyIn(Dist.CLIENT)
   public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
-    tooltip.add(new TranslatableComponent("item.enchantingrunes.rune.tooltip").withStyle(ChatFormatting.DARK_GREEN));
+    tooltip.add(Component.translatable("item.enchantingrunes.rune.tooltip").withStyle(ChatFormatting.DARK_GREEN));
   }
 
   @Override
@@ -44,11 +43,11 @@ public class RuneItem extends Item {
       return InteractionResult.PASS;
     }
     //get all runes for this 
-    player.sendMessage(context.getItemInHand().getHoverName(), player.getUUID());
+    player.sendSystemMessage(context.getItemInHand().getHoverName());
     for (RuneWord w : RuneType.WORDS) {
       //do i match it
       if (w.contains(this)) {
-        player.sendMessage(w.getMessage(), player.getUUID());
+        player.sendSystemMessage(w.getMessage());
       }
     }
     player.getCooldowns().addCooldown(this, COOLDOWN);

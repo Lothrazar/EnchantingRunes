@@ -1,12 +1,11 @@
 package com.lothrazar.enchantingrunes.runes;
 
-import com.lothrazar.enchantingrunes.item.RuneItem;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import com.lothrazar.enchantingrunes.item.RuneItem;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
@@ -147,6 +146,6 @@ public class RuneWord {
     for (RuneEnch e : this.enchants) {
       enchs += e.toString();
     }
-    return new TextComponent(this.getDisplayName() + " :: " + enchs);
+    return Component.literal(this.getDisplayName() + " :: " + enchs);
   }
 }

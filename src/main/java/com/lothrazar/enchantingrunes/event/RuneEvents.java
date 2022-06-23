@@ -1,17 +1,16 @@
 package com.lothrazar.enchantingrunes.event;
 
+import java.util.HashMap;
+import java.util.Map;
 import com.lothrazar.enchantingrunes.ModMainRunes;
 import com.lothrazar.enchantingrunes.runes.RuneEnch;
 import com.lothrazar.enchantingrunes.runes.RuneType;
 import com.lothrazar.enchantingrunes.runes.RuneWord;
-import java.util.HashMap;
-import java.util.Map;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.Item;
