@@ -109,7 +109,7 @@ public class RuneEvents {
 
   private void applyRandomEnch(ItemCraftedEvent event, ItemStack crafting) {
     //    CompoundNBT tag = crafting.getChildTag(ModMainRunes.MODID);
-    crafting = EnchantmentHelper.enchantItem(event.getPlayer().level.random, crafting, 1, false);
+    crafting = EnchantmentHelper.enchantItem(event.getEntity().level.random, crafting, 1, false);
   }
   //  private void merge(Map<Enchantment, Integer> oldEnch, ItemStack crafting) {
   //    Map<Enchantment, Integer> newEnch = EnchantmentHelper.getEnchantments(crafting);
