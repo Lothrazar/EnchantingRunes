@@ -1,0 +1,46 @@
+{
+	"type": "crafting_shapeless",
+	"ingredients": [
+		{
+			"tag": "enchantingrunes:runes/stone"
+		},
+		{
+			"tag": "enchantingrunes:runes/stone"
+		},
+		{
+			"tag": "enchantingrunes:runes/stone"
+		},
+		{
+			"tag": "enchantingrunes:runes/stone"
+		},
+		{
+			"tag": "enchantingrunes:runes/stone"
+		},
+		{
+			"tag": "enchantingrunes:runes/stone"
+		},
+		{
+			"tag": "enchantingrunes:runes/stone"
+		},
+		{
+			"tag": "enchantingrunes:runes/stone"
+		},
+		{
+			"item": "minecraft:iron_shovel"
+		}
+	],
+	"result": {
+		"item": "minecraft:iron_shovel",
+		"count": 1,
+		"nbt": {
+			"enchantingrunes": {
+				"lore": false
+			},
+			"display": {
+				"Lore": [
+					"{\"translate\":\"item.enchantingrunes.random\",\"color\":\"gold\"}"
+				]
+			}
+		}
+	}
+}

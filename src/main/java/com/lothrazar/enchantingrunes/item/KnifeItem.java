@@ -1,8 +1,9 @@
 package com.lothrazar.enchantingrunes.item;
 
 import java.util.List;
-import com.lothrazar.enchantingrunes.RuneRegistry;
+import com.lothrazar.enchantingrunes.RegistryRunes;
 import com.lothrazar.enchantingrunes.block.BlockLayering;
+import com.lothrazar.library.item.ItemFlib;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -12,7 +13,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
@@ -22,7 +22,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class KnifeItem extends Item {
+public class KnifeItem extends ItemFlib {
 
   private static final int COOLDOWN = 8;
 
@@ -67,7 +67,7 @@ public class KnifeItem extends Item {
     Level world = context.getLevel();
     BlockPos pos = context.getClickedPos();
     BlockState state = world.getBlockState(pos);
-    boolean validStone = state.getBlock() == Blocks.STONE_SLAB || state.getBlock() == Blocks.STONE || state.getBlock() == RuneRegistry.STONE_LAYERS.get();
+    boolean validStone = state.getBlock() == Blocks.STONE_SLAB || state.getBlock() == Blocks.STONE || state.getBlock() == RegistryRunes.STONE_LAYERS.get();
     return validStone;
   }
 
@@ -79,7 +79,7 @@ public class KnifeItem extends Item {
     }
     int newLayer = oldLayer - 1;
     if (newLayer > 0) {
-      world.setBlockAndUpdate(pos, RuneRegistry.STONE_LAYERS.get().defaultBlockState().setValue(BlockLayering.LAYERS, newLayer));
+      world.setBlockAndUpdate(pos, RegistryRunes.STONE_LAYERS.get().defaultBlockState().setValue(BlockLayering.LAYERS, newLayer));
     }
     else {
       world.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
@@ -89,7 +89,7 @@ public class KnifeItem extends Item {
   private void dropItem(UseOnContext context) { //flip a coin; if pass then drop one
     Level world = context.getLevel();
     BlockPos pos = context.getClickedPos();
-    dropHere(world, pos, new ItemStack(RuneRegistry.RUNE_BLANK.get()));
+    dropHere(world, pos, new ItemStack(RegistryRunes.RUNE_BLANK.get()));
     //TODO: reuse biome RNG stuff in future maybe
     //    final double dice = world.rand.nextDouble();
     //    List<Item> pick = Arrays.asList(new Item[] {

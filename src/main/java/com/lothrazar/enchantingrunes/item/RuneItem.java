@@ -1,14 +1,14 @@
 package com.lothrazar.enchantingrunes.item;
 
 import java.util.List;
-import com.lothrazar.enchantingrunes.RuneRegistry;
+import com.lothrazar.enchantingrunes.RegistryRunes;
 import com.lothrazar.enchantingrunes.runes.RuneType;
 import com.lothrazar.enchantingrunes.runes.RuneWord;
+import com.lothrazar.library.item.ItemFlib;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
@@ -17,7 +17,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class RuneItem extends Item {
+public class RuneItem extends ItemFlib {
 
   private static final int COOLDOWN = 8;
 
@@ -33,7 +33,7 @@ public class RuneItem extends Item {
 
   @Override
   public Rarity getRarity(ItemStack stack) {
-    return (this == RuneRegistry.RUNE_BLANK.get()) ? super.getRarity(stack) : Rarity.EPIC;
+    return (this == RegistryRunes.RUNE_BLANK.get()) ? super.getRarity(stack) : Rarity.EPIC;
   }
 
   @Override

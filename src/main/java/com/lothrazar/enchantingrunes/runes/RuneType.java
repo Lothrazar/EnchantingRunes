@@ -1,8 +1,8 @@
 package com.lothrazar.enchantingrunes.runes;
 
-import com.lothrazar.enchantingrunes.ConfigRuneManager;
+import com.lothrazar.enchantingrunes.ConfigRegistryRunes;
 import com.lothrazar.enchantingrunes.ModMainRunes;
-import com.lothrazar.enchantingrunes.RuneRegistry;
+import com.lothrazar.enchantingrunes.RegistryRunes;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -26,7 +26,7 @@ public enum RuneType {
   }
 
   public static void initWords() {
-    for (String s : ConfigRuneManager.THEWORDS.get()) {
+    for (String s : ConfigRegistryRunes.THEWORDS.get()) {
       try {
         parseWord(s);
       }
@@ -91,19 +91,19 @@ public enum RuneType {
   public Item getItem() {
     switch (this) {
       case A:
-        return RuneRegistry.RUNE_A.get();
+        return RegistryRunes.RUNE_A.get();
       case E:
-        return RuneRegistry.RUNE_E.get();
+        return RegistryRunes.RUNE_E.get();
       case I:
-        return RuneRegistry.RUNE_I.get();
+        return RegistryRunes.RUNE_I.get();
       case T:
-        return RuneRegistry.RUNE_TH.get();
+        return RegistryRunes.RUNE_TH.get();
       case O:
-        return RuneRegistry.RUNE_O.get();
+        return RegistryRunes.RUNE_O.get();
       case U:
-        return RuneRegistry.RUNE_U.get();
+        return RegistryRunes.RUNE_U.get();
       case Y:
-        return RuneRegistry.RUNE_Y.get();
+        return RegistryRunes.RUNE_Y.get();
       default:
       break;
     }
