@@ -3,8 +3,8 @@ package com.lothrazar.enchantingrunes;
 import com.lothrazar.enchantingrunes.item.KnifeItem;
 import com.lothrazar.enchantingrunes.item.RuneItem;
 import com.lothrazar.library.block.BlockLayering;
+import com.lothrazar.library.item.BlockItemFlib;
 import com.lothrazar.library.registry.RegistryFactory;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -39,5 +39,5 @@ public class RegistryRunes {
   //stone
   public static final RegistryObject<Item> BLADE_MASON = ITEMS.register("masonry_blade", () -> new KnifeItem(new Item.Properties()));
   public static final RegistryObject<Block> STONE_LAYERS = BLOCKS.register("stone_layer", () -> new BlockLayering(Blocks.STONE, BlockBehaviour.Properties.of(Material.STONE)));
-  public static final RegistryObject<Item> STONE_LAYERS_I = ITEMS.register("stone_layer", () -> new BlockItem(STONE_LAYERS.get(), new Item.Properties()));
+  public static final RegistryObject<Item> STONE_LAYERS_I = ITEMS.register("stone_layer", () -> new BlockItemFlib(STONE_LAYERS.get(), new Item.Properties()));
 }

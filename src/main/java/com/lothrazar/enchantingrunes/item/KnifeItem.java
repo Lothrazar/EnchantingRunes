@@ -3,12 +3,13 @@ package com.lothrazar.enchantingrunes.item;
 import com.lothrazar.enchantingrunes.RegistryRunes;
 import com.lothrazar.library.block.BlockLayering;
 import com.lothrazar.library.item.ItemFlib;
+import com.lothrazar.library.util.ItemStackUtil;
+import com.lothrazar.library.util.LevelWorldUtil;
+import com.lothrazar.library.util.SoundUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
@@ -21,7 +22,7 @@ public class KnifeItem extends ItemFlib {
   private static final int COOLDOWN = 8;
 
   public KnifeItem(Properties properties) {
-    super(properties.durability(64 * 2));
+    super(properties.durability(64 * 2), new Settings().tooltip());
   }
 
   @Override
@@ -42,9 +43,9 @@ public class KnifeItem extends ItemFlib {
     if (valid) {
       player.getCooldowns().addCooldown(this, COOLDOWN);
       player.swing(context.getHand());
-      world.playSound(player, pos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundSource.BLOCKS, 1, 1);
-      held.hurtAndBreak(1, player, p -> p.setItemInHand(context.getHand(), ItemStack.EMPTY));
-      dropItem(context);
+      SoundUtil.playSoundAtBlock(world, player, pos, SoundEvents.UI_STONECUTTER_TAKE_RESULT);
+      ItemStackUtil.damageItem(player, held, context.getHand());
+      LevelWorldUtil.dropItemStackInWorld(world, pos, new ItemStack(RegistryRunes.RUNE_BLANK.get()));
       reduceLayer(world, pos, state);
       return InteractionResult.SUCCESS;
     }
@@ -71,18 +72,6 @@ public class KnifeItem extends ItemFlib {
     }
     else {
       world.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
-    }
-  }
-
-  private void dropItem(UseOnContext context) { //flip a coin; if pass then drop one
-    Level world = context.getLevel();
-    BlockPos pos = context.getClickedPos();
-    dropHere(world, pos, new ItemStack(RegistryRunes.RUNE_BLANK.get()));
-  }
-
-  private void dropHere(Level world, BlockPos pos, ItemStack rune) {
-    if (!world.isClientSide) {
-      world.addFreshEntity(new ItemEntity(world, pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F, rune));
     }
   }
 }

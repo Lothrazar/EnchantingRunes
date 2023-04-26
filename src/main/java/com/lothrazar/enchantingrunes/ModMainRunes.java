@@ -7,7 +7,6 @@ import com.lothrazar.enchantingrunes.runes.RuneType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
@@ -18,21 +17,15 @@ public class ModMainRunes {
   public static final Logger LOGGER = LogManager.getLogger();
 
   public ModMainRunes() {
-    IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-    RegistryRunes.BLOCKS.register(eventBus);
-    RegistryRunes.ITEMS.register(eventBus);
-    //  RuneRegistry.TILE_ENTITIES.register(eventBus);
     new ConfigRegistryRunes();
-    FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-    FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient);
+    IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+    RegistryRunes.BLOCKS.register(bus);
+    RegistryRunes.ITEMS.register(bus);
+    bus.addListener(this::setup);
   }
 
   private void setup(final FMLCommonSetupEvent event) {
     MinecraftForge.EVENT_BUS.register(new RuneEvents());
     RuneType.initWords();
-  }
-
-  private void setupClient(final FMLClientSetupEvent event) {
-    //for client side only setup
   }
 }
