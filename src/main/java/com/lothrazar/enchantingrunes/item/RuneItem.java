@@ -26,7 +26,7 @@ public class RuneItem extends ItemFlib {
   @Override
   public InteractionResult useOn(UseOnContext context) {
     Player player = context.getPlayer();
-    if (!player.level.isClientSide || player.getCooldowns().isOnCooldown(this)) {
+    if (!player.level().isClientSide || player.getCooldowns().isOnCooldown(this)) {
       return InteractionResult.PASS;
     }
     //get all runes for this 

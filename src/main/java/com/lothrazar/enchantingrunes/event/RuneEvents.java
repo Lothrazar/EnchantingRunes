@@ -69,7 +69,7 @@ public class RuneEvents {
       if (doIt.size() == 0) {
         //.println("NO words matched go random");
         //gotta go random
-        ItemStackUtil.applyRandomEnch(event.getEntity().level.random, crafting);
+        ItemStackUtil.applyRandomEnch(event.getEntity().level().random, crafting);
         //no lore 
         ItemStackUtil.addLoreToStack(crafting, "-", null);
         //done now check damage
@@ -81,7 +81,7 @@ public class RuneEvents {
     }
     else {
       //gotta go random
-      ItemStackUtil.applyRandomEnch(event.getEntity().level.random, crafting);
+      ItemStackUtil.applyRandomEnch(event.getEntity().level().random, crafting);
     }
   }
 }
