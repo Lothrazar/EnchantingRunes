@@ -34,7 +34,7 @@ public class ConfigRegistryRunes {
     //array of strings
     THEWORDS = BUILDER.comment("All rune words found within recipes.  When crafting runes with a tool, if no runewords are found then a random enchantment might be chosen")
         .defineList("rune_words",
-            Arrays.asList(deflist),
+            () -> Arrays.asList(deflist),
             it -> it instanceof String);
     // "minecraft:sharpness->aeiouyt"
     BUILDER.pop(); // one pop for every push
