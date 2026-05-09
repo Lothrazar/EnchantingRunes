@@ -2,16 +2,15 @@ package com.lothrazar.enchantingrunes;
 
 import java.util.Arrays;
 import java.util.List;
-import com.lothrazar.library.config.ConfigTemplate;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
+import net.neoforged.neoforge.common.ModConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec.ConfigValue;
 
-public class ConfigRegistryRunes extends ConfigTemplate {
+public class ConfigRegistryRunes {
 
-  private static final ForgeConfigSpec CONFIG;
+  static final ModConfigSpec CONFIG;
   public static ConfigValue<List<? extends String>> THEWORDS;
   static {
-    final ForgeConfigSpec.Builder BUILDER = builder();
+    final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
     BUILDER.comment("General settings").push(ModMainRunes.MODID);
     String[] deflist = new String[] { "minecraft:sharpness->aei", "minecraft:sharpness->aeo", "minecraft:sharpness->au", "minecraft:smite->ou", "minecraft:unbreaking->eu"
         //more
@@ -27,20 +26,18 @@ public class ConfigRegistryRunes extends ConfigTemplate {
         , "cyclic:magnet->tat", "ensorcellation:soulbound->iia", "ensorcellation:magic_edge->aiy", "ensorcellation:frost_aspect->tuy"
         //
         , "minecraft:vanishing_curse->ooo", "ensorcellation:curse_mercy->aaa", "flowingagony:cutting_watermelon_dream->uty", "flowingagony:morirs_deathwish->uiuy"
-        //MGX 
+        //MGX
         , "flowingagony:nimble_finger->oit", "flowingagony:morirs_lifebound->ato", "flowingagony:trickster->tty", "flowingagony:fresh_revenge->eeti", "flowingagony:paper_brain->eoiy"
         //
         , "flowingagony:last_sweet_dream->tiy", "flowingagony:carefully_identified->tyi", "flowingagony:shock_therapy->aiiy"
     };
-    //array of strings 
-    THEWORDS = BUILDER.comment("All rune words found within recipes.  WHen crafting runes with a tool, if no runewords are found then a random enchantment might be chosen").defineList("rune_words", Arrays.asList(deflist),
-        it -> it instanceof String);
+    //array of strings
+    THEWORDS = BUILDER.comment("All rune words found within recipes.  When crafting runes with a tool, if no runewords are found then a random enchantment might be chosen")
+        .defineList("rune_words",
+            () -> Arrays.asList(deflist),
+            it -> it instanceof String);
     // "minecraft:sharpness->aeiouyt"
     BUILDER.pop(); // one pop for every push
     CONFIG = BUILDER.build();
-  }
-
-  public ConfigRegistryRunes() {
-    CONFIG.setConfig(setup(ModMainRunes.MODID));
   }
 }

@@ -5,12 +5,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import com.lothrazar.enchantingrunes.item.RuneItem;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class RuneWord {
 
@@ -69,21 +72,21 @@ public class RuneWord {
     return s;
   }
 
-  public boolean matches(CraftingContainer test, ItemStack crafting, Map<Integer, Boolean> used) {
+  public boolean matches(CraftingContainer test, ItemStack crafting, Map<Integer, Boolean> used, Registry<Enchantment> enchRegistry) {
     //stack being crafted can&will have enchants from previous runeword in this single craft
     int enchantsValid = 0;
     for (RuneEnch e : this.enchants) {
-      //is it valid 
-      if (!ForgeRegistries.ENCHANTMENTS.containsKey(e.getId())) {
+      //is it valid
+      ResourceKey<Enchantment> key = ResourceKey.create(Registries.ENCHANTMENT, e.getId());
+      if (!enchRegistry.containsKey(key)) {
         continue;
       }
-      Enchantment enchantment = ForgeRegistries.ENCHANTMENTS.getValue(e.getId());
-      if (enchantment == null) {
+      var holderOpt = enchRegistry.getHolder(key);
+      if (holderOpt.isEmpty()) {
         continue;
       }
-      if (!enchantment.canEnchant(crafting)) {
-        //ok then yes
-        //        .println("an NO CANNOT apply to " + enchantment);
+      Enchantment enchantment = holderOpt.get().value();
+      if (!enchantment.definition().supportedItems().contains(crafting.getItemHolder())) {
         continue;
       }
       enchantsValid++;

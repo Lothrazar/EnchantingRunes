@@ -18,10 +18,11 @@ public class RuneItem extends ItemFlib {
     super(properties);
   }
 
-  @Override
-  public Rarity getRarity(ItemStack stack) {
-    return (this == RegistryRunes.RUNE_BLANK.get()) ? super.getRarity(stack) : Rarity.EPIC;
-  }
+//  @Override
+//  public Rarity getRarity(ItemStack stack) {
+//
+//    return (this == RegistryRunes.RUNE_BLANK.get()) ? super.getRarity(stack) : Rarity.EPIC;
+//  }
 
   @Override
   public InteractionResult useOn(UseOnContext context) {
