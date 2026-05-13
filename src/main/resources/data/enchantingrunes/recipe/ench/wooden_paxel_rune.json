@@ -33,14 +33,14 @@
 			"values": [
 				{
 					"modid": "pickletweaks",
-					"type": "forge:mod_loaded"
+					"type": "neoforge:mod_loaded"
 				},
 				{
 					"item": "pickletweaks:wooden_paxel",
-					"type": "forge:item_exists"
+					"type": "neoforge:item_exists"
 				}
 			],
-			"type": "forge:and"
+			"type": "neoforge:and"
 		}
 	]
 }

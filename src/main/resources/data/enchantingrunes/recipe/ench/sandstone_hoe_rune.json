@@ -48,14 +48,14 @@
 			"values": [
 				{
 					"modid": "cyclic",
-					"type": "forge:mod_loaded"
+					"type": "neoforge:mod_loaded"
 				},
 				{
 					"item": "cyclic:sandstone_hoe",
-					"type": "forge:item_exists"
+					"type": "neoforge:item_exists"
 				}
 			],
-			"type": "forge:and"
+			"type": "neoforge:and"
 		}
 	]
 }
