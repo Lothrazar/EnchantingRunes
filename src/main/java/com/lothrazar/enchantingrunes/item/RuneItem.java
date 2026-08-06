@@ -27,18 +27,19 @@ public class RuneItem extends ItemFlib {
   @Override
   public InteractionResult useOn(UseOnContext context) {
     Player player = context.getPlayer();
-    if (!player.level().isClientSide || player.getCooldowns().isOnCooldown(this)) {
+    ItemStack held = context.getItemInHand();
+    if (!player.level().isClientSide() || player.getCooldowns().isOnCooldown(held)) {
       return InteractionResult.PASS;
     }
-    //get all runes for this 
-    player.sendSystemMessage(context.getItemInHand().getHoverName());
+    //get all runes for this
+    player.sendSystemMessage(held.getHoverName());
     for (RuneWord w : RuneType.WORDS) {
       //do i match it
       if (w.contains(this)) {
         player.sendSystemMessage(w.getMessage());
       }
     }
-    player.getCooldowns().addCooldown(this, COOLDOWN);
+    player.getCooldowns().addCooldown(held, COOLDOWN);
     return super.useOn(context);
   }
 }

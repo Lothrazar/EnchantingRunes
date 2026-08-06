@@ -35,7 +35,7 @@ public class RegistryRunes {
   //stone
   public static final DeferredHolder<Item, Item> BLADE_MASON = ITEMS.register("masonry_blade", () -> new KnifeItem(new Item.Properties()));
   public static final DeferredHolder<Block, BlockLayering> STONE_LAYERS = BLOCKS.register("stone_layer", () -> new BlockLayering(Blocks.STONE, BlockBehaviour.Properties.of()));
-  public static final DeferredHolder<Item, Item> STONE_LAYERS_I = ITEMS.register("stone_layer", () -> new BlockItemFlib(STONE_LAYERS.get(), new Item.Properties()));
+  public static final DeferredHolder<Item, Item> STONE_LAYERS_I = ITEMS.register("stone_layer", () -> new BlockItemFlib(STONE_LAYERS.get(), new Item.Properties().useBlockDescriptionPrefix()));
 
   public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TAB = TABS.register("tab", () -> CreativeModeTab.builder()
       .icon(() -> new ItemStack(RUNE_TH.get()))

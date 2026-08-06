@@ -1,13 +1,13 @@
 package com.lothrazar.enchantingrunes.runes;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class RuneEnch {
 
   private int lvl;
-  private ResourceLocation id;
+  private Identifier id;
 
-  public RuneEnch(int lvl, ResourceLocation id) {
+  public RuneEnch(int lvl, Identifier id) {
     super();
     this.lvl = lvl;
     this.id = id;
@@ -21,11 +21,11 @@ public class RuneEnch {
     this.lvl = lvl;
   }
 
-  public ResourceLocation getId() {
+  public Identifier getId() {
     return id;
   }
 
-  public void setId(ResourceLocation id) {
+  public void setId(Identifier id) {
     this.id = id;
   }
 

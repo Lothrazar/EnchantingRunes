@@ -11,12 +11,12 @@ import com.lothrazar.enchantingrunes.runes.RuneWord;
 import com.lothrazar.library.util.ItemStackUtil;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
@@ -33,7 +33,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent.ItemCraftedEvent;
 
 public class RuneEvents {
 
-  public static final TagKey<Item> RUNESTONE = ItemTags.create(ResourceLocation.fromNamespaceAndPath(ModMainRunes.MODID, "runes/stone"));
+  public static final TagKey<Item> RUNESTONE = ItemTags.create(Identifier.fromNamespaceAndPath(ModMainRunes.MODID, "runes/stone"));
 
   @SubscribeEvent
   public void test(ItemCraftedEvent event) {
@@ -63,11 +63,11 @@ public class RuneEvents {
     if (!(event.getInventory() instanceof CraftingContainer test)) {
       //gotta go random
 //      ItemStackUtil.applyRandomEnch(event.getEntity().level().random, crafting);
-      EnchantmentHelper.enchantItem(level.random, crafting, enchantLevel, level.registryAccess(), enchFilter);
+      EnchantmentHelper.enchantItem(level.getRandom(), crafting, enchantLevel, level.registryAccess(), enchFilter);
 
       return;
     }
-    Registry<Enchantment> enchRegistry = level.registryAccess().registryOrThrow(Registries.ENCHANTMENT);
+    HolderLookup.RegistryLookup<Enchantment> enchRegistry = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
     HashMap<Holder<Enchantment>, Integer> doIt = new HashMap<>();
     StringBuilder lore = new StringBuilder();
     Map<Integer, Boolean> used = new HashMap<>();
@@ -80,7 +80,7 @@ public class RuneEvents {
         //apply this
         for (RuneEnch ench : word.getEnchants()) {
           ResourceKey<Enchantment> key = ResourceKey.create(Registries.ENCHANTMENT, ench.getId());
-          enchRegistry.getHolder(key).ifPresent(holder -> doIt.put(holder, ench.getLvl()));
+          enchRegistry.get(key).ifPresent(holder -> doIt.put(holder, ench.getLvl()));
         }
         lore.append(word.getDisplayName());
         lore.append(" ");
@@ -97,7 +97,7 @@ public class RuneEvents {
       //gotta go random
       //new 1.21.1 feature: randomized power levels, not 30
       enchantLevel = Mth.nextInt(level.getRandom(), 4, 22);
-      EnchantmentHelper.enchantItem(level.random, crafting, enchantLevel, level.registryAccess(), enchFilter);
+      EnchantmentHelper.enchantItem(level.getRandom(), crafting, enchantLevel, level.registryAccess(), enchFilter);
       //no lore
       ItemStackUtil.addLoreToStack(crafting, "-", null);
       //done now check damage

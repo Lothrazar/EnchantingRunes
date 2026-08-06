@@ -28,7 +28,8 @@ public class KnifeItem extends ItemFlib {
   @Override
   public InteractionResult useOn(UseOnContext context) {
     Player player = context.getPlayer();
-    if (player.getCooldowns().isOnCooldown(this)) {
+    ItemStack held = context.getItemInHand();
+    if (player.getCooldowns().isOnCooldown(held)) {
       return InteractionResult.PASS;
     }
     if (context.getClickedFace() == Direction.DOWN) {
@@ -38,10 +39,9 @@ public class KnifeItem extends ItemFlib {
     Level world = context.getLevel();
     BlockPos pos = context.getClickedPos();
     BlockState state = world.getBlockState(pos);
-    ItemStack held = context.getItemInHand();
     boolean valid = this.isValid(context);
     if (valid) {
-      player.getCooldowns().addCooldown(this, COOLDOWN);
+      player.getCooldowns().addCooldown(held, COOLDOWN);
       player.swing(context.getHand());
       SoundUtil.playSoundAtBlock(world, player, pos, SoundEvents.UI_STONECUTTER_TAKE_RESULT);
       ItemStackUtil.damageItem(player, held, context.getHand());

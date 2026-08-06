@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Map;
 import com.lothrazar.enchantingrunes.item.RuneItem;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -22,7 +22,7 @@ public class RuneWord {
 
   public RuneWord() {}
 
-  public RuneWord(ResourceLocation id, List<RuneType> runes, RuneEnch... enchants) {
+  public RuneWord(Identifier id, List<RuneType> runes, RuneEnch... enchants) {
     this.runes = runes;
     this.enchants = Arrays.asList(enchants);
   }
@@ -44,7 +44,7 @@ public class RuneWord {
   }
 
   public RuneWord ench(int lvl, String id) {
-    enchants.add(new RuneEnch(lvl, ResourceLocation.tryParse(id)));
+    enchants.add(new RuneEnch(lvl, Identifier.tryParse(id)));
     return this;
   }
 
@@ -72,21 +72,18 @@ public class RuneWord {
     return s;
   }
 
-  public boolean matches(CraftingContainer test, ItemStack crafting, Map<Integer, Boolean> used, Registry<Enchantment> enchRegistry) {
+  public boolean matches(CraftingContainer test, ItemStack crafting, Map<Integer, Boolean> used, HolderLookup.RegistryLookup<Enchantment> enchRegistry) {
     //stack being crafted can&will have enchants from previous runeword in this single craft
     int enchantsValid = 0;
     for (RuneEnch e : this.enchants) {
       //is it valid
       ResourceKey<Enchantment> key = ResourceKey.create(Registries.ENCHANTMENT, e.getId());
-      if (!enchRegistry.containsKey(key)) {
-        continue;
-      }
-      var holderOpt = enchRegistry.getHolder(key);
+      var holderOpt = enchRegistry.get(key);
       if (holderOpt.isEmpty()) {
         continue;
       }
       Enchantment enchantment = holderOpt.get().value();
-      if (!enchantment.definition().supportedItems().contains(crafting.getItemHolder())) {
+      if (!enchantment.definition().supportedItems().contains(crafting.typeHolder())) {
         continue;
       }
       enchantsValid++;
