@@ -1,31 +1,26 @@
 {
-	"type": "crafting_shapeless",
-	"ingredients": [
-		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"item": "minecraft:wooden_axe"
-		}
-	],
-	"result": {
-		"item": "minecraft:wooden_axe",
-		"count": 1,
-		"nbt": {
-			"enchantingrunes": {
-				"lore": true
-			},
-			"display": {
-				"Lore": [
-					"{\"translate\":\"item.enchantingrunes.random\",\"color\":\"gold\"}"
-				]
-			}
-		}
-	}
+  "type": "crafting_shapeless",
+  "ingredients": [
+    "#enchantingrunes:runes/stone",
+    "#enchantingrunes:runes/stone",
+    "#enchantingrunes:runes/stone",
+    "minecraft:wooden_axe"
+  ],
+  "result": {
+    "id": "minecraft:wooden_axe",
+    "count": 1,
+    "components": {
+      "minecraft:lore": [
+        {
+          "translate": "item.enchantingrunes.random",
+          "color": "gold"
+        }
+      ],
+      "minecraft:custom_data": {
+        "enchantingrunes": {
+          "lore": true
+        }
+      }
+    }
+  }
 }

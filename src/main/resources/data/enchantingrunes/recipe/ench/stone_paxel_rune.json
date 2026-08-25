@@ -1,61 +1,46 @@
 {
-	"type": "crafting_shapeless",
-	"ingredients": [
-		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"tag": "enchantingrunes:runes/stone"
-		},
-		{
-			"item": "pickletweaks:stone_paxel"
-		}
-	],
-	"result": {
-		"item": "pickletweaks:stone_paxel",
-		"count": 1,
-		"nbt": {
-			"enchantingrunes": {
-				"lore": false
-			},
-			"display": {
-				"Lore": [
-					"{\"translate\":\"item.enchantingrunes.random\",\"color\":\"gold\"}"
-				]
-			}
-		}
-	},
-	"conditions": [
-		{
-			"values": [
-				{
-					"modid": "pickletweaks",
-					"type": "neoforge:mod_loaded"
-				},
-				{
-					"item": "pickletweaks:stone_paxel",
-					"type": "neoforge:item_exists"
-				}
-			],
-			"type": "neoforge:and"
-		}
-	]
+  "type": "crafting_shapeless",
+  "ingredients": [
+    "#enchantingrunes:runes/stone",
+    "#enchantingrunes:runes/stone",
+    "#enchantingrunes:runes/stone",
+    "#enchantingrunes:runes/stone",
+    "#enchantingrunes:runes/stone",
+    "#enchantingrunes:runes/stone",
+    "#enchantingrunes:runes/stone",
+    "#enchantingrunes:runes/stone",
+    "pickletweaks:stone_paxel"
+  ],
+  "result": {
+    "id": "pickletweaks:stone_paxel",
+    "count": 1,
+    "components": {
+      "minecraft:lore": [
+        {
+          "translate": "item.enchantingrunes.random",
+          "color": "gold"
+        }
+      ],
+      "minecraft:custom_data": {
+        "enchantingrunes": {
+          "lore": false
+        }
+      }
+    }
+  },
+  "neoforge:conditions": [
+    {
+      "values": [
+        {
+          "modid": "pickletweaks",
+          "type": "neoforge:mod_loaded"
+        },
+        {
+          "type": "neoforge:registered",
+          "value": "pickletweaks:stone_paxel"
+        }
+      ],
+      "type": "neoforge:and"
+    }
+  ]
 }

@@ -1,19 +1,15 @@
 {
-	"type": "minecraft:crafting_shaped",
-	"pattern": [
-		" s",
-		"ts"
-	],
-	"key": {
-		"s": {
-			"item": "minecraft:gravel"
-		},
-		"t": {
-			"item": "minecraft:stick"
-		}
-	},
-	"result": {
-		"item": "enchantingrunes:masonry_blade",
-		"count": 1
-	}
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " s",
+    "ts"
+  ],
+  "key": {
+    "s": "minecraft:gravel",
+    "t": "minecraft:stick"
+  },
+  "result": {
+    "id": "enchantingrunes:masonry_blade",
+    "count": 1
+  }
 }
